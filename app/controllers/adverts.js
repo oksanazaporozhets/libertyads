@@ -78,7 +78,7 @@ exports.show = function(req, res) {
  * List of Adverts
  */
 exports.all = function(req, res) {
-    Advert.find().sort('-created').populate('user', 'name username').exec(function(err, adverts) {
+    Advert.find({'user': req.user._id}).sort('-created').populate('user', 'name username').exec(function(err, adverts) {
         if (err) {
             res.render('error', {
                 status: 500
