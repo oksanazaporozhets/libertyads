@@ -27,7 +27,14 @@ var AdvertSchema = new Schema({
     user: {
         type: Schema.ObjectId,
         ref: 'User'
+    },
+    link:{
+        type: String
+    },
+    linktitle:{
+        type: String
     }
+
 });
 
 /**
@@ -37,6 +44,13 @@ AdvertSchema.path('title').validate(function(title) {
     return title.length;
 }, 'Title cannot be blank');
 
+AdvertSchema.path('link').validate(function(link) {
+    return link.length;
+}, 'Link cannot be blank');
+
+AdvertSchema.path('linktitle').validate(function(linktitle) {
+    return linktitle.length;
+}, 'Link-title cannot be blank');
 /**
  * Statics
  */
