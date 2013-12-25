@@ -1,7 +1,7 @@
 module.exports = {
     db: "mongodb://heroku_app20471632:eoqstrliuslc7fg4qvuocusoti@ds061938.mongolab.com:61938/heroku_app20471632",
     app: {
-        name: "MEAN - A Modern Stack - Development"
+        name: "Libertyads - Development"
     },
     facebook: {
         clientID: "334470976693893",

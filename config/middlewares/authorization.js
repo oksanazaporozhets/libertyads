@@ -31,3 +31,12 @@ exports.article = {
         next();
     }
 };
+
+exports.advert = {
+    hasAuthorization: function(req, res, next) {
+        if (req.advert.user.id != req.user.id) {
+            return res.send(401, 'User is not authorized');
+        }
+        next();
+    }
+};
