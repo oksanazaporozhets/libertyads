@@ -1,0 +1,8 @@
+<script>
+    var data = [];
+    Array.prototype.slice.call($$('label.b-regions-tree-leaf__label')).forEach(
+            function(e){
+                data.push({name: e.firstChild.data, position: e.getAttribute("for")})
+            })
+    console.log(JSON.stringify(data))
+</script>

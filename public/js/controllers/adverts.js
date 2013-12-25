@@ -4,7 +4,9 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
     $scope.create = function() {
         var advert = new Adverts({
             title: this.title,
-            content: this.content
+            content: this.content,
+            link: this.link,
+            linktitle: this.linktitle
         });
         advert.$save(function(response) {
             $location.path("adverts/" + response._id);
@@ -12,6 +14,8 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
 
         this.title = "";
         this.content = "";
+        this.link = "";
+        this.linktitle = "";
     };
 
     $scope.remove = function(advert) {

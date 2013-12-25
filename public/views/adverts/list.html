@@ -5,6 +5,7 @@
 			<span>{{advert.user.name}}</span>
 			<h2><a data-ng-href="#!/adverts/{{advert._id}}">{{advert.title}}</a></h2>
 			<div>{{advert.content}}</div>
+			<a href="http://{{advert.link}}">{{advert.linktitle}}</a>
 		</li>
 	</ul>
 	<h1 data-ng-hide="!adverts || adverts.length">No adverts yet. <br> Why don't you <a href="/#!/adverts/create">Create One</a>?</h1>

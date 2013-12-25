@@ -4,7 +4,8 @@
 var express = require('express'),
     fs = require('fs'),
     passport = require('passport'),
-    logger = require('mean-logger');
+    logger = require('mean-logger'),
+    baucis = require('baucis');
 
 /**
  * Main application entry file.
@@ -38,10 +39,12 @@ var walk = function(path) {
 };
 walk(models_path);
 
+baucis.rest('Advert');
 //bootstrap passport config
 require('./config/passport')(passport);
 
 var app = express();
+app.use('/api/v1', baucis());
 
 //express settings
 require('./config/express')(app, passport, db);
