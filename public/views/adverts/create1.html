@@ -6,7 +6,7 @@
             Создание объявления
         </div>
         <div class="panel-body">
-            <form method="post" action="" class="form-horizontal">
+            <form method="post" class="form-horizontal" data-ng-submit="create()">
                 <h4>1. Укажите регион, в котором вы хотите найти клиентов</h4>
                 <hr/>
                 <div class="row">
@@ -62,11 +62,11 @@
                         </div>
                     </div>
                     <div class="col-md-5">
-                        <div class="well well-lg col-md-10">
+                        <div class="well col-md-10">
                             <a href="{{link}}" class=""><b>{{title}}</b></a><br/>
 
                             <div>{{content}}</div>
-                            <small class="text-success" href="{{link}}">{{linktitle}}</small>
+                            <small class="text-success" href="http://{{link}}">{{linktitle}}</small>
                         </div>
                     </div>
                 </div>
