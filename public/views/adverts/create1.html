@@ -6,7 +6,7 @@
             Создание объявления
         </div>
         <div class="panel-body">
-            <form method="post" action="" class="form-horizontal">
+            <form method="post" class="form-horizontal" data-ng-submit="create()">
                 <h4>1. Укажите регион, в котором вы хотите найти клиентов</h4>
                 <hr/>
                 <div class="row">
@@ -62,11 +62,11 @@
                         </div>
                     </div>
                     <div class="col-md-5">
-                        <div class="well well-lg col-md-10">
+                        <div class="well col-md-10">
                             <a href="{{link}}" class=""><b>{{title}}</b></a><br/>
 
                             <div>{{content}}</div>
-                            <small class="text-success" href="{{link}}">{{linktitle}}</small>
+                            <small class="text-success" href="http://{{link}}">{{linktitle}}</small>
                         </div>
                     </div>
                 </div>
@@ -78,17 +78,17 @@
                             <label class="col-sm-4 control-label" for="keywords">Ключевые слова</label>
 
                             <div class="col-sm-8">
-                                <textarea placeholder="" rows="6" class="form-control " id="keywords"
+                                <textarea placeholder="" rows="10" class="form-control " id="keywords"
                                           type="text" maxlength="1000"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-5">
-                        <div class="form-group">
-                            <div class="col-sm-8" style="border: lightgray 1px solid; border-radius: 4px; min-height: 133px">
-                                <!--<textarea placeholder="" rows="6" class="form-control " id="keyword-tips"-->
-                                          <!--type="text" maxlength="100" readonly></textarea>-->
-                            </div>
+                        <div class="well well-lg col-md-10" style="height:214px">
+                            <!--<div class="col-sm-8 well" style="height:134px">-->
+                                <!--&lt;!&ndash;<textarea placeholder="" rows="6" class="form-control " id="keyword-tips"&ndash;&gt;-->
+                                <!--&lt;!&ndash;type="text" maxlength="100" readonly></textarea>&ndash;&gt;-->
+                            <!--</div>-->
                         </div>
                     </div>
                 </div>
