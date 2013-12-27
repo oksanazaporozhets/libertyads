@@ -1,54 +1,59 @@
-<!doctype html>
 
-<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-
-<head>
-    <title>Home</title>
-    <meta name="viewport" content="width=device-width">
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <!--<link rel="stylesheet" href="css/style.css">-->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
-</head>
-<body ng-app>
+<section data-ng-controller="AdvertsController">
 <div class="container">
     <div class="panel panel-default">
         <div class="panel-heading">
-            New advert
+            Создание объявления
         </div>
         <div class="panel-body">
             <form method="post" action="" class="form-horizontal">
+                <h4>1. Укажите регион, в котором вы хотите найти клиентов</h4>
+                <hr/>
                 <div class="row">
                     <div class="col-md-7">
                         <div class="form-group">
-                            <label class="col-sm-4 control-label" for="title">Title</label>
+                            <label class="col-sm-4 control-label" for="regions">Регионы показа</label>
+
+                            <div class="col-sm-8">
+                                <p class="label label-default" id="regions">Украина</p>
+                                <p class="text-muted">уточнить</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <h4>2. Напишите текст объявления</h4>
+                <hr/>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label" for="title">Заголовок:</label>
 
                             <div class="col-sm-8">
                                 <input placeholder="" class="form-control " id="title" type="text" ng-model="title"
-                                       maxlength="40"/>
+                                       maxlength="40" required/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-4 control-label" for="content">Content</label>
+                            <label class="col-sm-4 control-label" for="content">Текст объявления:</label>
 
                             <div class="col-sm-8">
                                 <textarea placeholder="" rows="4" class="form-control " id="content"
-                                          type="text" ng-model="content" maxlength="100"></textarea>
+                                          type="text" ng-model="content" maxlength="100" required></textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-4 control-label" for="link">Link</label>
-
-                            <div class="input-group col-sm-8">
-                                <span class="input-group-addon">http://</span>
-                                <input placeholder="" class="form-control " id="link" ng-model="link"
-                                       type="text" maxlength="45"/>
+                            <label class="col-sm-4 control-label" for="link">Сайт</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <span class="input-group-addon">http://</span>
+                                    <input placeholder="" class="form-control " id="link" ng-model="link"
+                                           type="text" maxlength="45"/>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-4 control-label" for="linktitle">Link title</label>
+                            <label class="col-sm-4 control-label" for="linktitle">Название сайта</label>
 
                             <div class="col-sm-8">
                                 <input placeholder="" class="form-control " id="linktitle" ng-model="linktitle"
@@ -65,11 +70,12 @@
                         </div>
                     </div>
                 </div>
+                <h4>3. Подберите ключевые фразы</h4>
                 <hr/>
                 <div class="row">
                     <div class="col-md-7">
                         <div class="form-group">
-                            <label class="col-sm-4 control-label" for="keywords">Key words</label>
+                            <label class="col-sm-4 control-label" for="keywords">Ключевые слова</label>
 
                             <div class="col-sm-8">
                                 <textarea placeholder="" rows="6" class="form-control " id="keywords"
@@ -77,7 +83,7 @@
                             </div>
                         </div>
                     </div>
-                <div class="col-md-5">
+                    <div class="col-md-5">
                         <div class="form-group">
                             <div class="col-sm-8" style="border: lightgray 1px solid; border-radius: 4px; min-height: 133px">
                                 <!--<textarea placeholder="" rows="6" class="form-control " id="keyword-tips"-->
@@ -86,12 +92,15 @@
                         </div>
                     </div>
                 </div>
-                <!--</div>-->
+                <hr/>
+                <div class="row">
+                    <div class="col-md-7">
+                        <button class="btn btn-default col-md-offset-4" type="submit">Создать</button>
+                    </div>
+                </div>
+
             </form>
         </div>
     </div>
 </div>
-
-
-</body>
-</html>
+</section>

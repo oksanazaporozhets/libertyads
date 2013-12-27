@@ -1,5 +1,5 @@
 <section data-ng-controller="AdvertsController" data-ng-init="find()">
-	<ul class="adverts unstyled">
+	<ul class="adverts list-unstyled">
 		<li data-ng-repeat="advert in adverts">
 			<span>{{advert.created | date:'medium'}}</span> /
 			<span>{{advert.user.name}}</span>
