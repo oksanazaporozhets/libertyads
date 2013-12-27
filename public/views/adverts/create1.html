@@ -15,7 +15,7 @@
                             <label class="col-sm-4 control-label" for="regions">Регионы показа</label>
 
                             <div class="col-sm-8">
-                                <p class="label label-default">Украина</p>
+                                <p class="label label-default" id="regions">Украина</p>
                                 <p class="text-muted">уточнить</p>
                             </div>
                         </div>
@@ -27,23 +27,23 @@
                 <div class="row">
                     <div class="col-md-7">
                         <div class="form-group">
-                            <label class="col-sm-4 control-label" for="title">Title</label>
+                            <label class="col-sm-4 control-label" for="title">Заголовок:</label>
 
                             <div class="col-sm-8">
                                 <input placeholder="" class="form-control " id="title" type="text" ng-model="title"
-                                       maxlength="40"/>
+                                       maxlength="40" required/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-4 control-label" for="content">Content</label>
+                            <label class="col-sm-4 control-label" for="content">Текст объявления:</label>
 
                             <div class="col-sm-8">
                                 <textarea placeholder="" rows="4" class="form-control " id="content"
-                                          type="text" ng-model="content" maxlength="100"></textarea>
+                                          type="text" ng-model="content" maxlength="100" required></textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-4 control-label" for="link">Link</label>
+                            <label class="col-sm-4 control-label" for="link">Сайт</label>
                             <div class="col-sm-8">
                                 <div class="input-group">
                                     <span class="input-group-addon">http://</span>
@@ -53,7 +53,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-4 control-label" for="linktitle">Link title</label>
+                            <label class="col-sm-4 control-label" for="linktitle">Название сайта</label>
 
                             <div class="col-sm-8">
                                 <input placeholder="" class="form-control " id="linktitle" ng-model="linktitle"
@@ -75,7 +75,7 @@
                 <div class="row">
                     <div class="col-md-7">
                         <div class="form-group">
-                            <label class="col-sm-4 control-label" for="keywords">Key words</label>
+                            <label class="col-sm-4 control-label" for="keywords">Ключевые слова</label>
 
                             <div class="col-sm-8">
                                 <textarea placeholder="" rows="6" class="form-control " id="keywords"
@@ -95,7 +95,7 @@
                 <hr/>
                 <div class="row">
                     <div class="col-md-7">
-                        <button class="btn btn-default col-md-offset-4" type="submit">Create</button>
+                        <button class="btn btn-default col-md-offset-4" type="submit">Создать</button>
                     </div>
                 </div>
 
