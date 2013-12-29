@@ -1,4 +1,4 @@
-angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$routeParams', '$location', 'Global', 'Adverts', function ($scope, $routeParams, $location, Global, Adverts) {
+angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$routeParams', '$location', 'Global', 'Adverts', '$modal', function ($scope, $routeParams, $location, Global, Adverts, $modal) {
     $scope.global = Global;
 
     $scope.create = function() {
@@ -61,4 +61,52 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
             $scope.advert = advert;
         });
     };
+
+//---------------1------------------------------------------
+    $scope.open = function (helpname) {
+
+        var modalInstance = $modal.open({
+//            templateUrl: 'myModalContent.html'
+            templateUrl: 'views/help/'+helpname+'.html'
+        });
+
+    };
+    $scope.ok = function () {
+        $modalInstance.close($scope);
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+
+
 }]);
+
+
+
+
+
+//--------------------------
+//var ModalDemoCtrl = function ($scope, $modal/*, $log*/) {
+//
+//   // $scope.items = ['item1', 'item2', 'item3'];
+//
+//    $scope.open = function () {
+//
+//        var modalInstance = $modal.open({
+//            templateUrl: 'myModalContent.html'
+////            controller: ModalInstanceCtrl,
+////            resolve: {
+////                items: function () {
+////                    return $scope.items;
+////                }
+////            }
+//        });
+//
+////        modalInstance.result.then(function (selectedItem) {
+////            $scope.selected = selectedItem;
+////        }, function () {
+////            $log.info('Modal dismissed at: ' + new Date());
+////        });
+//    };
+//};
