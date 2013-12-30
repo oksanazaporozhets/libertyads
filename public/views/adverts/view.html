@@ -2,14 +2,16 @@
     <span>{{advert.created | date:'medium'}}</span>/
     <span>{{advert.user.name}}</span>
     <h2>{{advert.title}}</h2>
-    <div data-ng-show="global.user._id == advert.user._id">
-        <a class="btn" href="/#!/adverts/{{advert._id}}/edit">
-        	<i class="icon-edit"></i>
-        </a> 
-        <a class="btn" data-ng-click="remove();">
-            <i class="icon-trash"></i>
-        </a>
-    </div>
     <div>{{advert.content}}</div>
     <a href="http://{{advert.link}}">{{advert.linktitle}}</a>
+    <hr/>
+    <div data-ng-show="global.user._id == advert.user._id">
+        <a class="btn btn-default" href="/#!/adverts/{{advert._id}}/edit">
+        	<i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a class="btn btn-default" data-ng-click="remove();">
+            <i class="glyphicon glyphicon-trash"></i>
+        </a>
+    </div>
+
 </section>

@@ -33,7 +33,8 @@ var AdvertSchema = new Schema({
     },
     linktitle:{
         type: String
-    }
+    },
+    regions:{}
 
 });
 
