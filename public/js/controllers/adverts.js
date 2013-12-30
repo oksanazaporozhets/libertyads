@@ -7,7 +7,8 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
             content: this.content,
             link: this.link,
             linktitle: this.linktitle,
-            regions: this.regions
+            regions: this.regions,
+            keywords: this.keywords
         });
         advert.$save(function(response) {
             $location.path("adverts/" + response._id);
@@ -18,6 +19,7 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
         this.link = "";
         this.linktitle = "";
         this.regions = "";
+        this.keywords = "";
     };
 
     $scope.remove = function(advert) {
@@ -71,42 +73,13 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
         });
 
     };
-    $scope.ok = function () {
-        $modalInstance.close($scope);
-    };
-
-    $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
-    };
+//    $scope.ok = function () {
+//        $modalInstance.close($scope);
+//    };
+//
+//    $scope.cancel = function () {
+//        $modalInstance.dismiss('cancel');
+//    };
 
 
 }]);
-
-
-
-
-
-//--------------------------
-//var ModalDemoCtrl = function ($scope, $modal/*, $log*/) {
-//
-//   // $scope.items = ['item1', 'item2', 'item3'];
-//
-//    $scope.open = function () {
-//
-//        var modalInstance = $modal.open({
-//            templateUrl: 'myModalContent.html'
-////            controller: ModalInstanceCtrl,
-////            resolve: {
-////                items: function () {
-////                    return $scope.items;
-////                }
-////            }
-//        });
-//
-////        modalInstance.result.then(function (selectedItem) {
-////            $scope.selected = selectedItem;
-////        }, function () {
-////            $log.info('Modal dismissed at: ' + new Date());
-////        });
-//    };
-//};
