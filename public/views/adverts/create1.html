@@ -6,12 +6,6 @@
         <!--</div>-->
         <!--<div class="panel-body">-->
         <form method="post" class="form-horizontal" data-ng-submit="create()">
-            <p class="col-md-offset-3"><span class="lead">Создание объявления</span>
-                <br/><i class="small">Все поля, отмеченные звездочкой (*), обязательны для заполнения.</i>
-                <br/><i class="small">При наличии орфографических ошибок и опечаток текст объявления может быть исправлен модератором.</i>
-            </p>
-
-
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>1. Укажите регион, в котором вы хотите найти клиентов</h4>
@@ -53,7 +47,7 @@
                     <div class="row">
                         <div class="col-md-7">
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="title">Заголовок*:</label>
+                                <label class="col-sm-4 control-label" for="title">Заголовок:</label>
 
                                 <div class="col-sm-8">
                                     <input placeholder="" class="form-control " id="title" type="text" ng-model="title"
@@ -63,7 +57,7 @@
                             <div class="form-group">
                                 <label class="col-sm-4 control-label" for="content"><a class="btn btn-link"
                                                                                        ng-click="open('goodadvert')"><i
-                                        class="glyphicon glyphicon-info-sign"></i></a>Текст объявления*:</label>
+                                        class="glyphicon glyphicon-info-sign"></i></a>Текст объявления:</label>
 
                                 <div class="col-sm-8">
                                     <textarea placeholder="" rows="4" class="form-control " id="content"
@@ -73,7 +67,7 @@
                             <div class="form-group">
                                 <label class="col-sm-4 control-label" for="link"><a class="btn btn-link"
                                                                                     ng-click="open('linkfield')"><i
-                                        class="glyphicon glyphicon-info-sign"></i></a>Сайт*:</label>
+                                        class="glyphicon glyphicon-info-sign"></i></a>Сайт:</label>
 
                                 <div class="col-sm-8">
                                     <div class="input-group">
@@ -120,7 +114,7 @@
                             <div class="form-group">
                                 <label class="col-sm-4 control-label" for="keywords"><a class="btn btn-link"
                                                                                         ng-click="open('keywords')"><i
-                                        class="glyphicon glyphicon-info-sign"></i></a>Ключевые слова*:</label>
+                                        class="glyphicon glyphicon-info-sign"></i></a>Ключевые слова:</label>
 
                                 <div class="col-sm-8">
                                     <textarea placeholder="" rows="10" class="form-control " id="keywords"
