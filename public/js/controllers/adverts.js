@@ -11,7 +11,7 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
             keywords: this.keywords
         });
         advert.$save(function(response) {
-            $location.path("adverts/" + response._id);
+            $location.path("adverts/"/* + response._id*/);
         });
 
         this.title = "";
@@ -46,7 +46,7 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
         advert.updated.push(new Date().getTime());
 
         advert.$update(function() {
-            $location.path('adverts/' + advert._id);
+            $location.path('adverts/'/* + advert._id*/);
         });
     };
 
