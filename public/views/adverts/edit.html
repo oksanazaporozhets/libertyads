@@ -83,10 +83,12 @@
                         </div>
                         <div class="col-md-5">
                             <div class="well col-md-10">
-                                <a href="http://{{advert.link}}" class=""><b>{{advert.title}}</b></a><br/>
+                                <a href="http://{{advert.link}}" class="" target="_blank"><b>{{advert.title}}</b></a><br/>
+
 
                                 <div>{{advert.content}}</div>
-                                <small class="text-success" href="http://{{advert.link}}">{{advert.linktitle}}</small>
+                                <small ng-if="!advert.linktitle" class="text-success">{{advert.link}}</small>
+                                <small ng-if="advert.linktitle" class="text-success">{{advert.linktitle}}</small>
                             </div>
                         </div>
                     </div>

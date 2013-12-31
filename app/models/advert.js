@@ -52,9 +52,10 @@ AdvertSchema.path('link').validate(function(link) {
     return link.length;
 }, 'Link cannot be blank');
 
-AdvertSchema.path('linktitle').validate(function(linktitle) {
-    return linktitle.length;
-}, 'Link-title cannot be blank');
+//AdvertSchema.path('linktitle').validate(function(linktitle) {
+//    return linktitle.length;
+//}, 'Link-title cannot be blank');
+
 /**
  * Statics
  */
