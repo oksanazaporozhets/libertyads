@@ -64,7 +64,8 @@
                         <a href="http://{{advert.link}}" class="" target="_blank"><b>{{advert.title}}</b></a><br/>
 
                         <div>{{advert.content}}</div>
-                        <small class="text-success" href="http://{{advert.link}}">{{advert.linktitle}}</small>
+                        <small ng-if="!advert.linktitle" class="text-success">{{advert.link}}</small>
+                        <small ng-if="advert.linktitle" class="text-success">{{advert.linktitle}}</small>
                     </div>
                     <div class="text-right" data-ng-show="global.user._id == advert.user._id">
                         <a class="btn btn-default" href="/#!/adverts/{{advert._id}}/edit">
