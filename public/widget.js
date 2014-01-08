@@ -31,7 +31,7 @@
             SVGElement.setAttribute("type", "image/svg+xml");
             SVGElement.setAttribute('data', SVGData.join());
             SVGElement.addEventListener('load', function () {
-                console.log('Identified embed tag %o with info: %o', el);
+                console.log('SVGElement loaded: %o', el);
             }, false);
             el.parentNode.insertBefore(SVGElement, el);
         } else {
