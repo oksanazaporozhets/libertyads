@@ -28,10 +28,10 @@ var AdvertSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'User'
     },
-    link:{
+    url:{
         type: String
     },
-    linktitle:{
+    urltitle:{
         type: String
     },
     regions:{},
@@ -48,9 +48,9 @@ AdvertSchema.path('title').validate(function(title) {
     return title.length;
 }, 'Title cannot be blank');
 
-AdvertSchema.path('link').validate(function(link) {
-    return link.length;
-}, 'Link cannot be blank');
+AdvertSchema.path('url').validate(function(url) {
+    return url.length;
+}, 'Url cannot be blank');
 
 //AdvertSchema.path('linktitle').validate(function(linktitle) {
 //    return linktitle.length;
