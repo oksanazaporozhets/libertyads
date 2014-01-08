@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
  */
 exports.ads = function (req, res) {
 
-    nativeDriver.adverts.find({}, {limit: 24, fields: {_id:0, title:1, content:1, link:1, linktitle:1}}).toArray(function (err, docs) {
+    nativeDriver.adverts.find({}, {limit: 24, fields: {_id:0, title:1, content:1, url:1}}).toArray(function (err, docs) {
         if (err) {
             res.render('error', {
                 status: 500
