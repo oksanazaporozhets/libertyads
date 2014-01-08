@@ -7,11 +7,13 @@ var J50Npi={currentScript:null,getJSON:function(b,d,h){var g=b+(b.indexOf("?")+1
 
         global.libertyAds = {};
 
+        J50Npi.getJSON("//api.wipmania.com/jsonp", {}, function(geodata){ alert(geodata.address.country) });
+
         // This is a WorldIP free geo-location database.
-        J50Npi.getJSON("//api.wipmania.com/jsonp", {}, function (geodata) {
-            alert(geodata.address.country);
-            console.log(geodata);
-        });
+//        J50Npi.getJSON("//api.wipmania.com/jsonp", {}, function (geodata) {
+//            alert(geodata.address.country);
+//            console.log(geodata);
+//        });
 
 //        // Getting all ads
 //        J50Npi.getJSON('//libertyads.herokuapp.com/ads', {}, function (geodata) {
