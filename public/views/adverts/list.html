@@ -61,11 +61,11 @@
                 <td>
                     <div class="<!--col-md-12-->">
                         <p class="small text-muted">№ {{advert._id}}</p>
-                        <a href="http://{{advert.link}}" class="" target="_blank"><b>{{advert.title}}</b></a><br/>
+                        <a href="http://{{advert.url}}" class="" target="_blank"><b>{{advert.title}}</b></a><br/>
 
                         <div>{{advert.content}}</div>
-                        <small ng-if="!advert.linktitle" class="text-success">{{advert.link}}</small>
-                        <small ng-if="advert.linktitle" class="text-success">{{advert.linktitle}}</small>
+                        <small ng-if="!advert.urltitle" class="text-success">{{advert.url}}</small>
+                        <small ng-if="advert.urltitle" class="text-success">{{advert.urltitle}}</small>
                     </div>
                     <div class="text-right" data-ng-show="global.user._id == advert.user._id">
                         <a class="btn btn-default" href="/#!/adverts/{{advert._id}}/edit">
@@ -104,9 +104,9 @@
 
 <!--<div class="col-md-5">-->
     <!--<div class="well well-lg col-md-10">-->
-        <!--<a href="{{advert.link}}" class=""><b>{{advrt.title}}</b></a><br/>-->
+        <!--<a href="{{advert.url}}" class=""><b>{{advrt.title}}</b></a><br/>-->
 
         <!--<div>{{advert.content}}</div>-->
-        <!--<small class="text-success" href="{{advert.link}}">{{advert.linktitle}}</small>-->
+        <!--<small class="text-success" href="{{advert.url}}">{{advert.urltitle}}</small>-->
     <!--</div>-->
 <!--</div>-->

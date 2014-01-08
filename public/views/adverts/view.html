@@ -3,7 +3,7 @@
     <span>{{advert.user.name}}</span>
     <h2>{{advert.title}}</h2>
     <div>{{advert.content}}</div>
-    <a href="http://{{advert.link}}">{{advert.linktitle}}</a>
+    <a href="http://{{advert.url}}">{{advert.urltitle}}</a>
     <hr/>
     <div data-ng-show="global.user._id == advert.user._id">
         <a class="btn btn-default" href="/#!/adverts/{{advert._id}}/edit">
