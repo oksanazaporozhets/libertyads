@@ -1,9 +1,14 @@
-(function (global) {
+var J50Npi = J50Npi || {currentScript:null,getJSON:function(b,d,h){var g=b+(b.indexOf("?")+1?"&":"?");var c=document.getElementsByTagName("head")[0];var a=document.createElement("script");var f=[];var e="";this.success=h;d.callback="J50Npi.success";for(e in d){f.push(e+"="+encodeURIComponent(d[e]))}g+=f.join("&");a.type="text/javascript";a.src=g;if(this.currentScript){c.removeChild(currentScript)}c.appendChild(a)},success:null};
+
+(function (globalScope) {
 
     // Globals
-    if (!global.libertyAds) {
-        global.libertyAds = {};
-        global.J50Npi={currentScript:null,getJSON:function(b,d,h){var g=b+(b.indexOf("?")+1?"&":"?");var c=document.getElementsByTagName("head")[0];var a=document.createElement("script");var f=[];var e="";this.success=h;d.callback="J50Npi.success";for(e in d){f.push(e+"="+encodeURIComponent(d[e]))}g+=f.join("&");a.type="text/javascript";a.src=g;if(this.currentScript){c.removeChild(currentScript)}c.appendChild(a)},success:null};
+    if (!globalScope.libertyAds) {
+        globalScope.libertyAds = {
+            // To keep track of which embeds we have already processed
+            foundEls : []
+        };
+        globalScope.
 
 
         // This is a WorldIP free geo-location database.
@@ -19,20 +24,14 @@
     }
 
 
-    var libertyAds = global.libertyAds;
-
-    // To keep track of which embeds we have already processed
-    if (!libertyAds.foundEls) libertyAds.foundEls = [];
-    var foundEls = libertyAds.foundEls;
-
     var els = document.getElementsByTagName('script');
     var re = /widget\.js/;
 
     for (var i = 0; i < els.length; i++) {
         var el = els[i];
-        if (el.src.match(re) && foundEls.indexOf(el) < 0) {
-            foundEls.push(el);
-            console.log('Identified embed tag %o with info: %o', el, foundEls.indexOf(el));
+        if (el.src.match(re) && libertyAds.foundEls.indexOf(el) < 0) {
+            libertyAds.foundEls.push(el);
+            console.log('Identified embed tag %o with info: %o', el, libertyAds.foundEls.indexOf(el));
 
             var size = el.getAttribute('data-size').split('x');
 
@@ -53,7 +52,7 @@
             }, false);
             el.parentNode.insertBefore(SVGElement, el);
         } else {
-            console.log('Skipping embed tag %o with info: %o', el, foundEls.indexOf(el));
+            console.log('Skipping embed tag %o with info: %o', el, libertyAds.foundEls.indexOf(el));
         }
     }
 }(this));
