@@ -13,6 +13,9 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
     }, {
         "title": "Создать объявление",
         "link": "adverts/create"
+    }, {
+        "title": "Размещение рекламы",
+        "link": "adverts/post"
     }];
     
     $scope.isCollapsed = false;
