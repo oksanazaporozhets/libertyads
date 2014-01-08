@@ -1,6 +1,11 @@
 (function (global) {
     // Globals
-    if (!global.libertyAds) global.libertyAds = {};
+    if (!global.libertyAds) {
+        global.libertyAds = {};
+        global.libertyAds.worker = new Worker('//libertyads.herokuapp.com/worker.js');
+    }
+
+
     var libertyAds = global.libertyAds;
 
     // To keep track of which embeds we have already processed
