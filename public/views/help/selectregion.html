@@ -1,12 +1,17 @@
-<div modal-content>{{}}
-    <br/>
-    region: <input type="text" data-ng-model="region"/>
-    <br/>region: {{region}}
-    <br/>
-    <a data-ng-click="mregion = region" href="">click</a>
-    <br/>
-    mregion: {{mregion}}
-    <br/>
-</div>
-<a class="btn btn-success" ng-click="ok(mregion)">OK</a>
-<a class="btn btn-warning" ng-click="cancel()">Cancel</a>
+<!doctype html>
+<html >
+<head>
+    <meta charset="utf-8">
+    <title>AngularJS Plunker</title>
+    <!--<link rel="stylesheet" href="style.css"/>-->
+    <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.js"></script>-->
+    <!--<script src="app.js"></script>-->
+</head>
+<body >
+<choice-tree ng-model="myTree"></choice-tree>
+<hr />
+{{data}}
+<!--<pre>$scope.myTree = {{myTree | json}}</pre>-->
+</body>
+</html>

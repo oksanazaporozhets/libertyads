@@ -64,14 +64,14 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
         });
     };
 
-//---------------1------------------------------------------
+//--------------regions------------------------------------------
     $scope.region = "qwerty";
     $scope.open = function (filename) {
 
 
         var modalInstance = $modal.open({
             templateUrl: 'views/help/'+filename+'.html',
-            controller: 'ModalInstanceCtrl',
+            controller: 'MainCtrl',
             resolve: {
                 mregion: function(){
                     return $scope.mregion;
@@ -101,3 +101,100 @@ var ModalInstanceCtrl = function ($scope, $modalInstance) {
         $modalInstance.dismiss('cancel');
     };
 };
+
+
+///==========================
+
+function Choice(name, children) {
+    this.name = name;
+    this.checked = false;
+    this.children = children || [];
+}
+
+var apparel = new Choice('Apparel', [
+    new Choice('Mens Shirts', [
+//        new Choice('Polo'),
+//        new Choice('Dress'),
+        new Choice('T-Shirt')
+    ]),
+//    new Choice('Womens Shirts'),
+    new Choice('Pants')
+]);
+//var boats = new Choice('Cars');
+
+//$http({method: 'get', url: '/api/v1/adverts'}).success(function(data, status){
+//    $scope.status = status;
+//    $scope.data = data;
+//
+//}).error(function(data, status){
+//        $scope.data = data || "Request failed";
+//        $scope.status = status;
+//    });
+//
+//var boats = $scope.data;
+
+
+var MainCtrl = function($scope, $http){
+    $scope.name = 'World';
+
+    $http({method: 'get', url: '/api/v1/adverts'}).success(function(data, status){
+        var mdata = JSON.parse(data);
+        alert(mdata);
+        $scope.status = status;
+        $scope.data = data;
+
+    }).error(function(data, status){
+        $scope.data = data || "Request failed";
+        $scope.status = status;
+    });
+
+    var boats = new Choice($scope.data);
+
+    $scope.myTree = [apparel, boats, $scope.data];
+};
+
+angular.module('mean.adverts').directive('choiceTree', function() {
+    return {
+        template: '<ul><choice ng-repeat="choice in tree"></choice></ul>',
+        replace: true,
+        transclude: true,
+        restrict: 'E',
+        scope: {
+            tree: '=ngModel'
+        }
+    };
+});
+
+
+
+
+angular.module('mean.adverts').directive('choice', function($compile){
+    return {
+        restrict: 'E',
+        //In the template, we do the thing with the span so you can click the
+        //text or the checkbox itself to toggle the check
+        template: '<li>' +
+            '<span ng-click="choiceClicked(choice)">' +
+            '<input type="checkbox" ng-checked="choice.checked"> {{choice.name}}' +
+            '</span>' +
+            '</li>',
+        link: function(scope, elm, attrs) {
+            scope.choiceClicked = function(choice) {
+                choice.checked = !choice.checked;
+                function checkChildren(c) {
+                    angular.forEach(c.children, function(c) {
+                        c.checked = choice.checked;
+                        checkChildren(c);
+                    });
+                }
+                checkChildren(choice);
+            };
+
+            //Add children by $compiling and doing a new choice directive
+            if (scope.choice.children.length > 0) {
+                var childChoice = $compile('<choice-tree ng-model="choice.children"></choice-tree>')(scope)
+                elm.append(childChoice);
+            }
+        }
+    };
+});
