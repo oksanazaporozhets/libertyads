@@ -13,10 +13,10 @@ var J50Npi={currentScript:null,getJSON:function(b,d,h){var g=b+(b.indexOf("?")+1
             console.log(geodata);
         });
 
-        // Getting all ads
-        J50Npi.getJSON('//libertyads.herokuapp.com/ads', {}, function (geodata) {
-            console.log(geodata);
-        });
+//        // Getting all ads
+//        J50Npi.getJSON('//libertyads.herokuapp.com/ads', {}, function (geodata) {
+//            console.log(geodata);
+//        });
     }
 
 
