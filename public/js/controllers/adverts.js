@@ -66,6 +66,7 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
 
 //---------------1------------------------------------------
     $scope.region = "qwerty";
+    $scope.userid = user._id;
     $scope.open = function (filename) {
 
 

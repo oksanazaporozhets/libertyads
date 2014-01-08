@@ -1,1 +1,12 @@
-<textarea name="" id="" cols="30" rows="10"><script data-id="$user.id" data-size="728x90" src="//libertyads.herokuapp.com/widget.js" async="true"></script></textarea>
+<section data-ng-controller="AdvertsController">
+<div class="col-md-8">
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="code"><!--<a class="btn btn-link" ng-click="open('code')"><i class="glyphicon glyphicon-info-sign"></i></a>-->Ваш код:</label>
+
+        <div class="col-sm-6">
+            <textarea class="form-control" name="code" id="code" rows="5"><script data-id="{{userid}}" data-size="728x90" src="//libertyads.herokuapp.com/widget.js" async="true"></script></textarea>
+        </div>
+    </div>
+
+</div>
+</section>
