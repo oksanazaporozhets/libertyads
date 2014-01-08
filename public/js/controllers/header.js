@@ -8,10 +8,10 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
 //        "title": "Create New Article",
 //        "link": "articles/create"
 //    }, {
-        "title": "Adverts",
+        "title": "Мои объявления",
         "link": "adverts"
     }, {
-        "title": "Create New Advert",
+        "title": "Создать объявление",
         "link": "adverts/create"
     }];
     

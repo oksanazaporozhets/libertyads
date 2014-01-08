@@ -7,10 +7,11 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
             content: this.content,
             link: this.link,
             linktitle: this.linktitle,
-            regions: this.regions
+            regions: this.regions,
+            keywords: this.keywords
         });
         advert.$save(function(response) {
-            $location.path("adverts/" + response._id);
+            $location.path("adverts/"/* + response._id*/);
         });
 
         this.title = "";
@@ -18,6 +19,7 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
         this.link = "";
         this.linktitle = "";
         this.regions = "";
+        this.keywords = "";
     };
 
     $scope.remove = function(advert) {
@@ -44,7 +46,7 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
         advert.updated.push(new Date().getTime());
 
         advert.$update(function() {
-            $location.path('adverts/' + advert._id);
+            $location.path('adverts/'/* + advert._id*/);
         });
     };
 
@@ -63,50 +65,39 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
     };
 
 //---------------1------------------------------------------
-    $scope.open = function (helpname) {
+    $scope.region = "qwerty";
+    $scope.open = function (filename) {
+
 
         var modalInstance = $modal.open({
-//            templateUrl: 'myModalContent.html'
-            templateUrl: 'views/help/'+helpname+'.html'
+            templateUrl: 'views/help/'+filename+'.html',
+            controller: 'ModalInstanceCtrl',
+            resolve: {
+                mregion: function(){
+                    return $scope.mregion;
+                }
+            }
+        });
+        modalInstance.result.then(function (selectedRegion) {
+            $scope.mregion = selectedRegion;
         });
 
-    };
-    $scope.ok = function () {
-        $modalInstance.close($scope);
-    };
-
-    $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
     };
 
 
 }]);
 
+var ModalInstanceCtrl = function ($scope, $modalInstance) {
 
+//    $scope.region = region;
+//    $scope.region = '1';
 
+    $scope.ok = function (mregion) {
+        $modalInstance.close(mregion);
+        console.log(mregion);
+    };
 
-
-//--------------------------
-//var ModalDemoCtrl = function ($scope, $modal/*, $log*/) {
-//
-//   // $scope.items = ['item1', 'item2', 'item3'];
-//
-//    $scope.open = function () {
-//
-//        var modalInstance = $modal.open({
-//            templateUrl: 'myModalContent.html'
-////            controller: ModalInstanceCtrl,
-////            resolve: {
-////                items: function () {
-////                    return $scope.items;
-////                }
-////            }
-//        });
-//
-////        modalInstance.result.then(function (selectedItem) {
-////            $scope.selected = selectedItem;
-////        }, function () {
-////            $log.info('Modal dismissed at: ' + new Date());
-////        });
-//    };
-//};
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+};

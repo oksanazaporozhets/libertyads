@@ -6,10 +6,12 @@
         <!--</div>-->
         <!--<div class="panel-body">-->
         <form method="post" class="form-horizontal" data-ng-submit="create()">
-
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>1. Укажите регион, в котором вы хотите найти клиентов</h4>
+                    <small>Если вы укажете географический регион, в котором находятся ваши потенциальные клиенты, то
+                        объявления будут показаны только в этом регионе.
+                    </small>
                 </div>
                 <div class="panel-body">
                     <!--&lt;!&ndash;<h4>1. Укажите регион, в котором вы хотите найти клиентов</h4>&ndash;&gt;-->
@@ -19,12 +21,18 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label" for="regions"><a class="btn btn-link"
                                                                                    ng-click="open('region')"><i
-                                    class="glyphicon glyphicon-info-sign"></i></a>Регионы показа</label>
+                                    class="glyphicon glyphicon-info-sign"></i></a>Регионы показа:</label>
 
                             <div class="col-sm-8">
                                 <p class="label label-default" id="regions">Украина</p>
 
-                                <p class="text-muted">уточнить</p>
+                                <p class="text-muted"><a class="" href=""
+                                                         ng-click="open('selectregion')">уточнить</a>
+                                <div ng-show="mregion">выбрано: {{ mregion }}</div>
+
+
+
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -34,6 +42,10 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>2. Напишите текст объявления</h4>
+                    <small>Объявление состоит из заголовка и текста объявления. Максимальная длина заголовка — 33
+                        символа, текста — 75. В заголовок и текст объявления нельзя включать номера телефонов и
+                        электронные адреса, также нельзя набирать слова заглавными буквами (кроме аббревиатур).
+                    </small>
                 </div>
                 <div class="panel-body">
                     <!--<h4>2. Напишите текст объявления</h4>-->
@@ -61,18 +73,18 @@
                             <div class="form-group">
                                 <label class="col-sm-4 control-label" for="link"><a class="btn btn-link"
                                                                                     ng-click="open('linkfield')"><i
-                                        class="glyphicon glyphicon-info-sign"></i></a>Сайт</label>
+                                        class="glyphicon glyphicon-info-sign"></i></a>Сайт:</label>
 
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <span class="input-group-addon">http://</span>
                                         <input placeholder="" class="form-control " id="link" ng-model="link"
-                                               type="text" maxlength="45"/>
+                                               type="text" maxlength="45" required/>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="linktitle">Название сайта</label>
+                                <label class="col-sm-4 control-label" for="linktitle">Название сайта:</label>
 
                                 <div class="col-sm-8">
                                     <input placeholder="" class="form-control " id="linktitle" ng-model="linktitle"
@@ -82,10 +94,11 @@
                         </div>
                         <div class="col-md-5">
                             <div class="well col-md-10">
-                                <a href="{{link}}" class=""><b>{{title}}</b></a><br/>
+                                <a href="http://{{link}}" class="" target="_blank"><b>{{title}}</b></a><br/>
 
                                 <div>{{content}}</div>
-                                <small class="text-success" href="http://{{link}}">{{linktitle}}</small>
+                                <small ng-if="!linktitle" class="text-success">{{link}}</small>
+                                <small ng-if="linktitle" class="text-success">{{linktitle}}</small>
                             </div>
                         </div>
                     </div>
@@ -94,6 +107,10 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>3. Подберите ключевые фразы</h4>
+                    <small>Ваши объявления будут показаны в ответ на запросы пользователей, содержащие указанные вами
+                        ключевые фразы. Чем больше ключевых фраз вы подберете, тем больше вероятность показа объявления
+                        и перехода на ваш сайт (или страницу с адресом и телефоном).
+                    </small>
                 </div>
                 <div class="panel-body">
                     <!--<h4>3. Подберите ключевые фразы</h4>-->
@@ -103,11 +120,11 @@
                             <div class="form-group">
                                 <label class="col-sm-4 control-label" for="keywords"><a class="btn btn-link"
                                                                                         ng-click="open('keywords')"><i
-                                        class="glyphicon glyphicon-info-sign"></i></a>Ключевые слова</label>
+                                        class="glyphicon glyphicon-info-sign"></i></a>Ключевые слова:</label>
 
                                 <div class="col-sm-8">
                                     <textarea placeholder="" rows="10" class="form-control " id="keywords"
-                                              type="text" maxlength="1000"></textarea>
+                                              type="text" maxlength="1000" ng-model="keywords" required></textarea>
                                 </div>
                             </div>
                         </div>

@@ -6,11 +6,14 @@
         <!--Создание объявления-->
         <!--</div>-->
         <!--<div class="panel-body">-->
-        <form method="post" class="form-horizontal" data-ng-submit="create()">
+        <form class="form-horizontal" data-ng-submit="update()">
 
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>1. Укажите регион, в котором вы хотите найти клиентов</h4>
+                    <small>Если вы укажете географический регион, в котором находятся ваши потенциальные клиенты, то
+                        объявления будут показаны только в этом регионе.
+                    </small>
                 </div>
                 <div class="panel-body">
                     <!--&lt;!&ndash;<h4>1. Укажите регион, в котором вы хотите найти клиентов</h4>&ndash;&gt;-->
@@ -20,7 +23,7 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label" for="regions"><a class="btn btn-link"
                                                                                    ng-click="open('region')"><i
-                                    class="glyphicon glyphicon-info-sign"></i></a>Регионы показа</label>
+                                    class="glyphicon glyphicon-info-sign"></i></a>Регионы показа:</label>
 
                             <div class="col-sm-8">
                                 <p class="label label-default" id="regions">Украина</p>
@@ -35,6 +38,10 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>2. Напишите текст объявления</h4>
+                    <small>Объявление состоит из заголовка и текста объявления. Максимальная длина заголовка — 33
+                        символа, текста — 75. В заголовок и текст объявления нельзя включать номера телефонов и
+                        электронные адреса, также нельзя набирать слова заглавными буквами (кроме аббревиатур).
+                    </small>
                 </div>
                 <div class="panel-body">
                     <!--<h4>2. Напишите текст объявления</h4>-->
@@ -62,7 +69,7 @@
                             <div class="form-group">
                                 <label class="col-sm-4 control-label" for="link"><a class="btn btn-link"
                                                                                     ng-click="open('linkfield')"><i
-                                        class="glyphicon glyphicon-info-sign"></i></a>Сайт</label>
+                                        class="glyphicon glyphicon-info-sign"></i></a>Сайт:</label>
 
                                 <div class="col-sm-8">
                                     <div class="input-group">
@@ -73,7 +80,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="linktitle">Название сайта</label>
+                                <label class="col-sm-4 control-label" for="linktitle">Название сайта:</label>
 
                                 <div class="col-sm-8">
                                     <input placeholder="" class="form-control " id="linktitle" data-ng-model="advert.linktitle"
@@ -83,10 +90,12 @@
                         </div>
                         <div class="col-md-5">
                             <div class="well col-md-10">
-                                <a href="{{advert.link}}" class=""><b>{{advert.title}}</b></a><br/>
+                                <a href="http://{{advert.link}}" class="" target="_blank"><b>{{advert.title}}</b></a><br/>
+
 
                                 <div>{{advert.content}}</div>
-                                <small class="text-success" href="http://{{advert.link}}">{{advert.linktitle}}</small>
+                                <small ng-if="!advert.linktitle" class="text-success">{{advert.link}}</small>
+                                <small ng-if="advert.linktitle" class="text-success">{{advert.linktitle}}</small>
                             </div>
                         </div>
                     </div>
@@ -95,6 +104,10 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>3. Подберите ключевые фразы</h4>
+                    <small>Ваши объявления будут показаны в ответ на запросы пользователей, содержащие указанные вами
+                        ключевые фразы. Чем больше ключевых фраз вы подберете, тем больше вероятность показа объявления
+                        и перехода на ваш сайт (или страницу с адресом и телефоном).
+                    </small>
                 </div>
                 <div class="panel-body">
                     <!--<h4>3. Подберите ключевые фразы</h4>-->
@@ -104,11 +117,11 @@
                             <div class="form-group">
                                 <label class="col-sm-4 control-label" for="keywords"><a class="btn btn-link"
                                                                                         ng-click="open('keywords')"><i
-                                        class="glyphicon glyphicon-info-sign"></i></a>Ключевые слова</label>
+                                        class="glyphicon glyphicon-info-sign"></i></a>Ключевые слова:</label>
 
                                 <div class="col-sm-8">
                                     <textarea placeholder="" rows="10" class="form-control " id="keywords"
-                                              type="text" maxlength="1000"></textarea>
+                                              type="text" maxlength="1000" data-ng-model="advert.keywords"></textarea>
                                 </div>
                             </div>
                         </div>
