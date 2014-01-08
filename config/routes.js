@@ -1,4 +1,4 @@
-module.exports = function(app, passport, auth) {
+module.exports = function (app, passport, auth) {
     //User Routes
     var users = require('../app/controllers/users');
     app.get('/signin', users.signin);
@@ -82,8 +82,11 @@ module.exports = function(app, passport, auth) {
     //Finish with setting up the articleId param
     app.param('advertId', adverts.advert);
 
-    //Home route
+    // Home route
     var index = require('../app/controllers/index');
     app.get('/', index.render);
+
+    // Ads translator
+    app.get('/ads', require('../app/controllers/context').ads);
 
 };
