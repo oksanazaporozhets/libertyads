@@ -2,11 +2,10 @@
 
     // Globals
     if (!global.libertyAds) {
-        var J50Npi={currentScript:null,getJSON:function(b,d,h){var g=b+(b.indexOf("?")+1?"&":"?");var c=document.getElementsByTagName("head")[0];var a=document.createElement("script");var f=[];var e="";this.success=h;d.callback="J50Npi.success";for(e in d){f.push(e+"="+encodeURIComponent(d[e]))}g+=f.join("&");a.type="text/javascript";a.src=g;if(this.currentScript){c.removeChild(currentScript)}c.appendChild(a)},success:null};
-
         global.libertyAds = {};
+        global.J50Npi={currentScript:null,getJSON:function(b,d,h){var g=b+(b.indexOf("?")+1?"&":"?");var c=document.getElementsByTagName("head")[0];var a=document.createElement("script");var f=[];var e="";this.success=h;d.callback="J50Npi.success";for(e in d){f.push(e+"="+encodeURIComponent(d[e]))}g+=f.join("&");a.type="text/javascript";a.src=g;if(this.currentScript){c.removeChild(currentScript)}c.appendChild(a)},success:null};
 
-        J50Npi.getJSON("//api.wipmania.com/jsonp", {}, function(geodata){ alert(geodata.address.country) });
+        global.J50Npi.getJSON("//api.wipmania.com/jsonp", {}, function(geodata){ alert(geodata.address.country) });
 
         // This is a WorldIP free geo-location database.
 //        J50Npi.getJSON("//api.wipmania.com/jsonp", {}, function (geodata) {
