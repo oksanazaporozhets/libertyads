@@ -65,21 +65,39 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
     };
 
 //---------------1------------------------------------------
-    $scope.open = function (helpname) {
+    $scope.region = "qwerty";
+    $scope.open = function (filename) {
+
 
         var modalInstance = $modal.open({
-//            templateUrl: 'myModalContent.html'
-            templateUrl: 'views/help/'+helpname+'.html'
+            templateUrl: 'views/help/'+filename+'.html',
+            controller: 'ModalInstanceCtrl',
+            resolve: {
+                mregion: function(){
+                    return $scope.mregion;
+                }
+            }
+        });
+        modalInstance.result.then(function (selectedRegion) {
+            $scope.mregion = selectedRegion;
         });
 
     };
-//    $scope.ok = function () {
-//        $modalInstance.close($scope);
-//    };
-//
-//    $scope.cancel = function () {
-//        $modalInstance.dismiss('cancel');
-//    };
 
 
 }]);
+
+var ModalInstanceCtrl = function ($scope, $modalInstance) {
+
+//    $scope.region = region;
+//    $scope.region = '1';
+
+    $scope.ok = function (mregion) {
+        $modalInstance.close(mregion);
+        console.log(mregion);
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+};

@@ -26,7 +26,13 @@
                             <div class="col-sm-8">
                                 <p class="label label-default" id="regions">Украина</p>
 
-                                <p class="text-muted">уточнить</p>
+                                <p class="text-muted"><a class="" href=""
+                                                         ng-click="open('selectregion')">уточнить</a>
+                                <div ng-show="mregion">выбрано: {{ mregion }}</div>
+
+
+
+                                </p>
                             </div>
                         </div>
                     </div>
