@@ -14,7 +14,7 @@
         var el = els[i];
         if (el.src.match(re) && foundEls.indexOf(el) < 0) {
             foundEls.push(el);
-            console.log('Identified embed tag %o with info: %o', el);
+            console.log('Identified embed tag %o with info: %o', el, foundEls.indexOf(el));
 
             var size = el.getAttribute('data-size').split('x');
 
@@ -34,6 +34,8 @@
                 console.log('Identified embed tag %o with info: %o', el);
             }, false);
             el.parentNode.insertBefore(SVGElement, el);
+        } else {
+            console.log('Skipping embed tag %o with info: %o', el, foundEls.indexOf(el));
         }
     }
 }(this));
