@@ -10,6 +10,17 @@
  */
 var J50Npi = J50Npi || {currentScript:null,getJSON:function(b,d,h){var g=b+(b.indexOf("?")+1?"&":"?");var c=document.getElementsByTagName("head")[0];var a=document.createElement("script");var f=[];var e="";this.success=h;d.callback="J50Npi.success";for(e in d){f.push(e+"="+encodeURIComponent(d[e]))}g+=f.join("&");a.type="text/javascript";a.src=g;if(this.currentScript){c.removeChild(currentScript)}c.appendChild(a)},success:null};
 
+function getRandomSubarray(arr, size) {
+    var shuffled = arr.slice(0), i = arr.length, temp, index;
+    while (i--) {
+        index = Math.floor(i * Math.random());
+        temp = shuffled[index];
+        shuffled[index] = shuffled[i];
+        shuffled[i] = temp;
+    }
+    return shuffled.slice(0, size);
+}
+
 (function (globalScope) {
     // Globals
     if (!globalScope.libertyAds) {
@@ -48,10 +59,13 @@ var J50Npi = J50Npi || {currentScript:null,getJSON:function(b,d,h){var g=b+(b.in
             ee.addListener('data:load', (function (el) {
                 return function () {
 
-                    var svgData = ['data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2">'];
-                    libertyAds.dataObj.forEach(function (ad) {
-                        svgData.push('<a xlink:href="' + ad.url + '" target="_top"><text x="0" y="15">' + ad.title + '</text></a>');
-                    })
+                    var svgData = ['data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">'],
+                        x = 1;
+
+                    getRandomSubarray(libertyAds.dataObj, 3).forEach(function (ad) {
+                        svgData.push('<a xlink:href="' + ad.url + '" target="_top"><text x="' + x + '" y="24">' + ad.title + '</text></a>');
+                        x += 242;
+                    });
                     svgData.push('</svg>');
 
                     var size = el.getAttribute('data-size').split('x');
