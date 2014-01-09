@@ -63,7 +63,7 @@ var J50Npi = J50Npi || {currentScript:null,getJSON:function(b,d,h){var g=b+(b.in
                     objectDocument.setAttribute("type", "image/svg+xml");
                     objectDocument.setAttribute('data', SVGData.join());
 
-                    svgDocument.addEventListener('load', function () {
+                    objectDocument.addEventListener('load', function () {
                         console.log('SVGElement loaded: %o', el);
 
                         var svgns = "http://www.w3.org/2000/svg",
