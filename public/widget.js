@@ -64,7 +64,7 @@ function getRandomSubarray(arr, size) {
 
                     getRandomSubarray(libertyAds.dataObj, 2).forEach(function (ad) {
                         svgData.push('<a xlink:href="' + ad.url + '" target="_top"><text x="' + x + '" y="20" font-size="16" fill="blue">' + encodeURIComponent(ad.title) + '</text></a>');
-                        svgData.push('<text x="' + x + '" y="40" font-size="14">' + ad.content + '</text>');
+                        svgData.push('<text x="' + x + '" y="40" font-size="14">' + ad.text + '</text>');
                         x += 364;
                     });
                     svgData.push('</svg>');
