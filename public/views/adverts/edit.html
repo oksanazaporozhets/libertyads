@@ -57,13 +57,13 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="content"><a class="btn btn-link"
+                                <label class="col-sm-4 control-label" for="text"><a class="btn btn-link"
                                                                                        ng-click="open('goodadvert')"><i
                                         class="glyphicon glyphicon-info-sign"></i></a>Текст объявления:</label>
 
                                 <div class="col-sm-8">
-                                    <textarea placeholder="" rows="4" class="form-control " id="content"
-                                              type="text" data-ng-model="advert.content" maxlength="100" required></textarea>
+                                    <textarea placeholder="" rows="4" class="form-control " id="text"
+                                              type="text" data-ng-model="advert.text" maxlength="100" required></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -93,7 +93,7 @@
                                 <a href="http://{{advert.url}}" class="" target="_blank"><b>{{advert.title}}</b></a><br/>
 
 
-                                <div>{{advert.content}}</div>
+                                <div>{{advert.text}}</div>
                                 <small ng-if="!advert.urltitle" class="text-success">{{advert.url}}</small>
                                 <small ng-if="advert.urltitle" class="text-success">{{advert.urltitle}}</small>
                             </div>
