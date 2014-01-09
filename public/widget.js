@@ -56,17 +56,43 @@ var J50Npi = J50Npi || {currentScript:null,getJSON:function(b,d,h){var g=b+(b.in
                         '</svg>'
                     ];
 
-                    var SVGElement = document.createElement("object");
-                    SVGElement.style.border = "1px solid green";
-                    SVGElement.width = size[0];
-                    SVGElement.height = size[1];
-                    SVGElement.setAttribute("type", "image/svg+xml");
-                    SVGElement.setAttribute('data', SVGData.join());
-                    SVGElement.addEventListener('load', function () {
+                    var svgDocument = document.createElement("object");
+                    svgDocument.style.border = "1px solid green";
+                    svgDocument.width = size[0];
+                    svgDocument.height = size[1];
+                    svgDocument.setAttribute("type", "image/svg+xml");
+                    svgDocument.setAttribute('data', SVGData.join());
+
+                    svgDocument.addEventListener('load', function () {
                         console.log('SVGElement loaded: %o', el);
+
+                            var svgns = "http://www.w3.org/2000/svg";
+
+                            var data1 = svgDocument.createTextNode("Line 1");
+                            var data2 = svgDocument.createTextNode("Line 2");
+
+                            var span1 = svgDocument.createElementNS(svgns, "tspan");
+                            var span2 = svgDocument.createElementNS(svgns, "tspan");
+
+                            span2.setAttributeNS(null, "x", "0");
+                            span2.setAttributeNS(null, "dy", "1em");
+
+                            var text = svgDocument.createElementNS(svgns, "text");
+                            text.setAttributeNS(null, "x", "0");
+                            text.setAttributeNS(null, "y", "13");
+                            text.setAttributeNS(null, "fill", "green");
+
+                            span1.appendChild(data1);
+                            span2.appendChild(data2);
+
+                            text.appendChild(span1);
+                            text.appendChild(span2);
+
+                            svgDocument.documentElement.appendChild(text);
+
                     }, false);
 
-                    el.parentNode.insertBefore(SVGElement, el);
+                    el.parentNode.insertBefore(svgDocument, el);
 
                     // Always remove after use
                     return true;
