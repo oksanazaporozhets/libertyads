@@ -103,7 +103,8 @@ function escapeHtml(unsafe) {
             ee.addListener('data:load', (function (el) {
                 return function () {
 
-                    var svgData = [
+                    var size = el.getAttribute('data-size').split('x'),
+                        svgData = [
                             'data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">',
                             '<style type="text/css"><![CDATA[ * {font-family: Tahoma;} .title{font-size: 16px; text-decoration: underline; fill: blue;} .text{font-size: 14px;} .url{font-size: 12px; fill:green;}]]></style>'
                         ],
@@ -111,7 +112,7 @@ function escapeHtml(unsafe) {
 
                     getRandomSubarray(libertyAds.dataObj, 2).forEach(function (ad) {
                         var y = 20;
-                        svgData.push('<a xlink:href="' + ad.url + '" target="_top"><text class="title" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.title)) + '</text></a>');
+                        svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="title" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.title)) + '</text></a>');
 
                         splitIntoLines(ad.text, 50).forEach(function(line){
                             y += 20;
@@ -125,7 +126,6 @@ function escapeHtml(unsafe) {
                     });
                     svgData.push('</svg>');
 
-                    var size = el.getAttribute('data-size').split('x');
                     var objectDocument = document.createElement("object");
                     objectDocument.style.border = "1px solid green";
                     objectDocument.width = size[0];
