@@ -60,12 +60,12 @@ function getRandomSubarray(arr, size) {
                 return function () {
 
                     var svgData = ['data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">'],
-                        x = 1;
+                        x = 0;
 
-                    getRandomSubarray(libertyAds.dataObj, 3).forEach(function (ad) {
+                    getRandomSubarray(libertyAds.dataObj, 2).forEach(function (ad) {
                         svgData.push('<a xlink:href="' + ad.url + '" target="_top"><text x="' + x + '" y="20" font-size="16" fill="blue">' + ad.title + '</text></a>');
                         svgData.push('<text x="' + x + '" y="40" font-size="14">' + ad.content + '</text>');
-                        x += 242;
+                        x += 364;
                     });
                     svgData.push('</svg>');
 
