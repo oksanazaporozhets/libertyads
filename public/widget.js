@@ -59,7 +59,7 @@ function getRandomSubarray(arr, size) {
             ee.addListener('data:load', (function (el) {
                 return function () {
 
-                    var svgData = ['data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">'],
+                    var svgData = ['data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">'],
                         x = 0;
 
                     getRandomSubarray(libertyAds.dataObj, 2).forEach(function (ad) {
