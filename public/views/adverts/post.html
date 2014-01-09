@@ -1,12 +1,105 @@
 <section data-ng-controller="AdvertsController">
-<div class="col-md-8">
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="code"><!--<a class="btn btn-link" ng-click="open('code')"><i class="glyphicon glyphicon-info-sign"></i></a>-->Ваш код:</label>
+    <div class="container row">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-md-3" for="">Выберите размеры вашего рекламного блока:</label>
+                <div class="col-md-9">
+                    <div class="col-md-3">
+                        <select class="form-control" name="size" data-ng-model="img">
+                            <option value="{{images}}">240x400</option>
+                            <option value="{{secondimexamples}}" >728x90</option>
+                            <option value="{{thirdimexamples}}" >1000x120</option>
+                            <option value="{{fourthimexamples}}" >160x600</option>
+                            <option value="{{fifthimexamples}}" >300x250</option>
+                        </select>
+                    </div>
 
-        <div class="col-sm-6">
-            <textarea class="form-control" name="code" id="code" rows="5"><script data-id="{{userid}}" data-size="728x90" src="//libertyads.herokuapp.com/widget.js" async="true"></script></textarea>
-        </div>
+                        <div class="col-md-12"><br/>
+                            <input type="text" class="col-md-10" data-ng-model="img"/> <br/>
+                        <img class="img-thumbnail" src="{{img}}" alt=""/>
+                        <img class="img-thumbnail" src="{{img.img2}}" alt=""/>
+                        <img class="img-thumbnail" src="{{img.img3}}" alt=""/>
+
+
+
+                            <div>
+                                <select id="myselection" ng-init="selectedColors=3" ng-model="selectedColors">
+                                    <option value="1">Red</option>
+                                    <option value="2">Blue</option>
+                                    <option value="3">Green</option>
+                                </select>
+                                <div>Selected Colors: {{selectedColors }}</div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                    <label class="col-md-3" for="">Выберите вариант оформления вашего рекламного блока:</label>
+                    <div class="col-md-9">
+                        <div class="row ">
+                            <div class="col-md-6 well"></div>
+                            <div class="col-md-6 well"></div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-6 well"></div>
+                            <div class="col-md-6 well"></div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-6 well"></div>
+                            <div class="col-md-6 well"></div>
+                        </div>
+                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3" for="">Выберите размеры вашего рекламного блока:</label>
+                <div class="col-md-9">
+                    <div class="col-md-3">
+                        <select class="form-control" name="" id="">
+                            <option value="">240x400</option>
+                            <option value="">728x90</option>
+                            <option value="">1000x120</option>
+                            <option value="">160x600</option>
+                            <option value="">300x250</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                    <label class="col-md-3" for="">Выберите размеры вашего рекламного блока:</label>
+                    <div class="col-md-9">
+                        <div class="col-md-3">
+                            <select class="form-control" name="" id="">
+                                <option value="">240x400</option>
+                                <option value="">728x90</option>
+                                <option value="">1000x120</option>
+                                <option value="">160x600</option>
+                                <option value="">300x250</option>
+                            </select>
+                        </div>
+                    </div>
+            </div>
+        </form>
+
+
+
+
+
+
+
+        <br/><br/><br/><br/><br/>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="code"><!--<a class="btn btn-link" ng-click="open('code')"><i class="glyphicon glyphicon-info-sign"></i></a>-->Ваш код:</label>
+
+                            <div class="col-sm-6">
+                                <textarea class="form-control" name="code" id="code" rows="5"><script data-id="{{userid}}" data-size="728x90" src="//libertyads.herokuapp.com/widget.js" async="true"></script></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
     </div>
-
-</div>
 </section>

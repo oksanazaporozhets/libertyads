@@ -4,7 +4,7 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
     $scope.create = function() {
         var advert = new Adverts({
             title: this.title,
-            content: this.content,
+            text: this.text,
             url: this.url,
             urltitle: this.urltitle,
             regions: this.regions,
@@ -15,7 +15,7 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
         });
 
         this.title = "";
-        this.content = "";
+        this.text = "";
         this.url = "";
         this.urltitle = "";
         this.regions = "";
@@ -67,6 +67,35 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
 //---------------1------------------------------------------
     $scope.region = "qwerty";
     $scope.userid = user._id;
+
+//    var firstimexamples = function($scope){
+//        var images = {};
+//        images.f = [     {img1: "http://help.yandex.ru/partner/image/banners-direct-rtb-240400.png"},
+//                         {img2: "http://help.yandex.ru/partner/image/banners-direct-rtb-240400.png"},
+//                         {img3: "http://help.yandex.ru/partner/image/banners-media-rtb-240400.png"}];
+//        return images;
+//    };
+//    var blabla = function(images, $scope){
+//        $scope.images = images;
+//    };
+
+    $scope.firstimexamples = {  img1: "http://help.yandex.ru/partner/image/banners-direct-rtb-240400.png",
+                                img2: "http://help.yandex.ru/partner/image/banners-direct-rtb-240400.png",
+                                img3: "http://help.yandex.ru/partner/image/banners-media-rtb-240400.png"};
+    $scope.secondimexamples ={  img1: 'http://help.yandex.ru/partner/image/banners-direct-rtb-72890.png',
+                                img2: 'http://help.yandex.ru/partner/image/banners-direct-pic-rtb-72890.png',
+                                img3: 'http://help.yandex.ru/partner/image/banners-media-rtb-72890.png'};
+    $scope.thirdimexamples ={   img1: 'http://help.yandex.ru/partner/image/banners-direct-rtb-1000120.png',
+                                img2: 'http://help.yandex.ru/partner/image/banners-direct-rtb-1000120.png',
+                                img3: 'http://help.yandex.ru/partner/image/banners-media-rtb-1000120.png'};
+    $scope.fourthimexamples ={  img1: 'http://help.yandex.ru/partner/image/banners-direct-rtb-160600.png',
+                                img2: 'http://help.yandex.ru/partner/image/banners-direct-pic-rtb-160600.png',
+                                img3: 'http://help.yandex.ru/partner/image/banners-media-rtb-160600.png'};
+    $scope.fifthimexamples ={   img1: 'http://help.yandex.ru/partner/image/banners-direct-rtb-300250.png',
+                                img2: 'http://help.yandex.ru/partner/image/banners-direct-pic-rtb-300250.png',
+                                img3: 'http://help.yandex.ru/partner/image/banners-media-rtb-300250.png'};
+
+
     $scope.open = function (filename) {
 
 

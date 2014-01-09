@@ -4,7 +4,7 @@
 			<!--<span>{{advert.created | date:'medium'}}</span> /-->
 			<!--<span>{{advert.user.name}}</span>-->
 			<!--<h2><a data-ng-href="#!/adverts/{{advert._id}}">{{advert.title}}</a></h2>-->
-			<!--<div>{{advert.content}}</div>-->
+			<!--<div>{{advert.text}}</div>-->
 			<!--<a href="http://{{advert.link}}">{{advert.linktitle}}</a>-->
 		<!--</li>-->
 	<!--</ul>-->
@@ -17,7 +17,7 @@
             <!--<div class="well col-md-10">-->
                 <!--<a href="http://{{advert.link}}" class="" target="_blank"><b>{{advert.title}}</b></a><br/>-->
 
-                <!--<div>{{advert.content}}</div>-->
+                <!--<div>{{advert.text}}</div>-->
                 <!--<small class="text-success" href="http://{{advert.link}}">{{advert.linktitle}}</small>-->
             <!--</div>-->
             <!--<div data-ng-show="global.user._id == advert.user._id">-->
@@ -63,7 +63,7 @@
                         <p class="small text-muted">№ {{advert._id}}</p>
                         <a href="http://{{advert.url}}" class="" target="_blank"><b>{{advert.title}}</b></a><br/>
 
-                        <div>{{advert.content}}</div>
+                        <div>{{advert.text}}</div>
                         <small ng-if="!advert.urltitle" class="text-success">{{advert.url}}</small>
                         <small ng-if="advert.urltitle" class="text-success">{{advert.urltitle}}</small>
                     </div>
@@ -106,7 +106,7 @@
     <!--<div class="well well-lg col-md-10">-->
         <!--<a href="{{advert.url}}" class=""><b>{{advrt.title}}</b></a><br/>-->
 
-        <!--<div>{{advert.content}}</div>-->
+        <!--<div>{{advert.text}}</div>-->
         <!--<small class="text-success" href="{{advert.url}}">{{advert.urltitle}}</small>-->
     <!--</div>-->
 <!--</div>-->

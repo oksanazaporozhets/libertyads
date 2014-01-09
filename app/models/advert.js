@@ -19,7 +19,7 @@ var AdvertSchema = new Schema({
         default: '',
         trim: true
     },
-    content: {
+    text: {
         type: String,
         default: '',
         trim: true
