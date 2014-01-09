@@ -9,6 +9,41 @@
  * Basic JSONP helper (pure JS)
  */
 var J50Npi = J50Npi || {currentScript:null,getJSON:function(b,d,h){var g=b+(b.indexOf("?")+1?"&":"?");var c=document.getElementsByTagName("head")[0];var a=document.createElement("script");var f=[];var e="";this.success=h;d.callback="J50Npi.success";for(e in d){f.push(e+"="+encodeURIComponent(d[e]))}g+=f.join("&");a.type="text/javascript";a.src=g;if(this.currentScript){c.removeChild(currentScript)}c.appendChild(a)},success:null};
+function splitIntoLines(n,t){var e,o,r=[],h="",i=n.split(" ");for(e=0;e<i.length;)o=addWordOntoLine(h,i[e]),o.length>t?(0==h.length&&(h=o,e++),r.push(h),h=""):(h=o,e++);return h.length>0&&r.push(h),r}function addWordOntoLine(n,t){return 0!=n.length&&(n+=" "),n+=t}
+
+function splitIntoLines(input, len) {
+    var i;
+    var output = [];
+    var lineSoFar = "";
+    var temp;
+    var words = input.split(' ');
+    for (i = 0; i < words.length;) {
+        // check if adding this word would exceed the len
+        temp = addWordOntoLine(lineSoFar, words[i]);
+        if (temp.length > len) {
+            if (lineSoFar.length == 0) {
+                lineSoFar = temp;     // force to put at least one word in each line
+                i++;                  // skip past this word now
+            }
+            output.push(lineSoFar);   // put line into output
+            lineSoFar = "";           // init back to empty
+        } else {
+            lineSoFar = temp;         // take the new word
+            i++;                      // skip past this word now
+        }
+    }
+    if (lineSoFar.length > 0) {
+        output.push(lineSoFar);
+    }
+    return(output);
+}
+
+function addWordOntoLine(line, word) {
+    if (line.length != 0) {
+        line += " ";
+    }
+    return(line += word);
+}
 
 function getRandomSubarray(arr, size) {
     var shuffled = arr.slice(0), i = arr.length, temp, index;
@@ -69,11 +104,17 @@ function escapeHtml(unsafe) {
                 return function () {
 
                     var svgData = ['data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">'],
-                        x = 0;
+                        x = 0,
+                        y = 20;
 
                     getRandomSubarray(libertyAds.dataObj, 2).forEach(function (ad) {
-                        svgData.push('<a xlink:href="' + ad.url + '" target="_top"><text x="' + x + '" y="20" font-size="16" fill="blue">' + encodeURIComponent(escapeHtml(ad.title)) + '</text></a>');
-                        svgData.push('<text x="' + x + '" y="40" font-size="14">' + encodeURIComponent(escapeHtml(ad.text)) + '</text>');
+                        svgData.push('<a xlink:href="' + ad.url + '" target="_top"><text x="' + x + '" y="' + y + '" font-size="16" fill="blue">' + encodeURIComponent(escapeHtml(ad.title)) + '</text></a>');
+
+                        splitIntoLines(ad.text, 50).forEach(function(line){
+                            y += 20;
+                            svgData.push('<text x="' + x + '" y="' + y + '" font-size="14">' + encodeURIComponent(escapeHtml(ad.text)) + '</text>');
+                        });
+
                         x += 364;
                     });
                     svgData.push('</svg>');
