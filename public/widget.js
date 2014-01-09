@@ -103,19 +103,23 @@ function escapeHtml(unsafe) {
             ee.addListener('data:load', (function (el) {
                 return function () {
 
-                    var svgData = ['data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">'],
+                    var svgData = [
+                            'data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">',
+                            '<style type="text/css"><![CDATA[ * {font-family: Tahoma;} .title{font-size: 16px; text-decoration: underline; fill: blue;} .text{font-size: 14px;} .url{font-size: 12px; fill:green;}]]></style>'
+                        ],
                         x = 0;
 
                     getRandomSubarray(libertyAds.dataObj, 2).forEach(function (ad) {
                         var y = 20;
-                        svgData.push('<a xlink:href="' + ad.url + '" target="_top"><text x="' + x + '" y="' + y + '" font-size="16" text-decoration = "underline" fill="blue">' + encodeURIComponent(escapeHtml(ad.title)) + '</text></a>');
+                        svgData.push('<a xlink:href="' + ad.url + '" target="_top"><text class="title" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.title)) + '</text></a>');
 
                         splitIntoLines(ad.text, 50).forEach(function(line){
                             y += 20;
-                            svgData.push('<text x="' + x + '" y="' + y + '" font-size="14">' + encodeURIComponent(escapeHtml(line)) + '</text>');
+                            svgData.push('<text class="text" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(line)) + '</text>');
                         });
+
                         y += 20;
-                        svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text x="' + x + '" y="' + y + '" font-size="16" text-decoration = "underline" fill="green">' + encodeURIComponent(escapeHtml(ad.vurl || ad.url)) + '</text></a>');
+                        svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="url" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.vurl || ad.url)) + '</text></a>');
 
                         x += 364;
                     });
