@@ -21,6 +21,15 @@ function getRandomSubarray(arr, size) {
     return shuffled.slice(0, size);
 }
 
+function escapeHtml(unsafe) {
+    return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
 (function (globalScope) {
     // Globals
     if (!globalScope.libertyAds) {
@@ -63,8 +72,8 @@ function getRandomSubarray(arr, size) {
                         x = 0;
 
                     getRandomSubarray(libertyAds.dataObj, 2).forEach(function (ad) {
-                        svgData.push('<a xlink:href="' + ad.url + '" target="_top"><text x="' + x + '" y="20" font-size="16" fill="blue">' + encodeURIComponent(ad.title) + '</text></a>');
-                        svgData.push('<text x="' + x + '" y="40" font-size="14">' + ad.text + '</text>');
+                        svgData.push('<a xlink:href="' + ad.url + '" target="_top"><text x="' + x + '" y="20" font-size="16" fill="blue">' + encodeURIComponent(escapeHtml(ad.title)) + '</text></a>');
+                        svgData.push('<text x="' + x + '" y="40" font-size="14">' + encodeURIComponent(escapeHtml(ad.text)) + '</text>');
                         x += 364;
                     });
                     svgData.push('</svg>');
