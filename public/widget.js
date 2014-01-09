@@ -112,7 +112,7 @@ function escapeHtml(unsafe) {
 
                         splitIntoLines(ad.text, 50).forEach(function(line){
                             y += 20;
-                            svgData.push('<text x="' + x + '" y="' + y + '" font-size="14">' + encodeURIComponent(escapeHtml(ad.text)) + '</text>');
+                            svgData.push('<text x="' + x + '" y="' + y + '" font-size="14">' + encodeURIComponent(escapeHtml(line)) + '</text>');
                         });
 
                         x += 364;
