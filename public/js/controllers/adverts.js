@@ -65,19 +65,8 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
     };
 
 //---------------1------------------------------------------
-    $scope.region = "qwerty";
+//    $scope.region = "qwerty";
     $scope.userid = user._id;
-
-//    var firstimexamples = function($scope){
-//        var images = {};
-//        images.f = [     {img1: "http://help.yandex.ru/partner/image/banners-direct-rtb-240400.png"},
-//                         {img2: "http://help.yandex.ru/partner/image/banners-direct-rtb-240400.png"},
-//                         {img3: "http://help.yandex.ru/partner/image/banners-media-rtb-240400.png"}];
-//        return images;
-//    };
-//    var blabla = function(images, $scope){
-//        $scope.images = images;
-//    };
 
     $scope.firstimexamples = {  img1: "http://help.yandex.ru/partner/image/banners-direct-rtb-240400.png",
                                 img2: "http://help.yandex.ru/partner/image/banners-direct-rtb-240400.png",
@@ -115,7 +104,55 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
     };
 
 
+    $scope.imagesize = function($scope, clres){
+//        if (clres == "firstim") {
+            $scope.img1 = 'http://help.yandex.ru/partner/image/banners-direct-rtb-240400.png';
+            $scope.img2 = 'http://help.yandex.ru/partner/image/banners-direct-pic-rtb-240400.png';
+            $scope.img3 = 'http://help.yandex.ru/partner/image/banners-media-rtb-240400.png'; /*}*/
+        if (clres == "secondim") {
+            $scope.img1 = 'http://help.yandex.ru/partner/image/banners-direct-rtb-240400.png1';
+            $scope.img2 = 'http://help.yandex.ru/partner/image/banners-direct-pic-rtb-240400.png1';
+            $scope.img3 = 'http://help.yandex.ru/partner/image/banners-media-rtb-240400.png1'; }
+        if (clres == "thirdim") {
+            $scope.img1 = 'http://help.yandex.ru/partner/image/banners-direct-rtb-240400.png';
+            $scope.img2 = 'http://help.yandex.ru/partner/image/banners-direct-pic-rtb-240400.png';
+            $scope.img3 = 'http://help.yandex.ru/partner/image/banners-media-rtb-240400.png'; }
+    };
+
 }]);
+
+angular.module('mean.adverts').directive('firstim', function() {
+        firstimexamples = {  img1: "http://help.yandex.ru/partner/image/banners-direct-rtb-240400.png",
+            img2: "http://help.yandex.ru/partner/image/banners-direct-pic-rtb-240400.png",
+            img3: "http://help.yandex.ru/partner/image/banners-media-rtb-240400.png"};
+        secondimexamples ={  img1: 'http://help.yandex.ru/partner/image/banners-direct-rtb-72890.png',
+            img2: 'http://help.yandex.ru/partner/image/banners-direct-pic-rtb-240400.png',
+            img3: 'http://help.yandex.ru/partner/image/banners-media-rtb-72890.png'};
+        thirdimexamples ={   img1: 'http://help.yandex.ru/partner/image/banners-direct-rtb-1000120.png',
+            img2: 'http://help.yandex.ru/partner/image/banners-direct-pic-rtb-240400.png',
+            img3: 'http://help.yandex.ru/partner/image/banners-media-rtb-1000120.png'};
+        fourthimexamples ={  img1: 'http://help.yandex.ru/partner/image/banners-direct-rtb-160600.png',
+            img2: 'http://help.yandex.ru/partner/image/banners-direct-pic-rtb-240400.png',
+            img3: 'http://help.yandex.ru/partner/image/banners-media-rtb-160600.png'};
+        fifthimexamples ={   img1: 'http://help.yandex.ru/partner/image/banners-direct-rtb-300250.png',
+            img2: 'http://help.yandex.ru/partner/image/banners-direct-pic-rtb-240400.png',
+            img3: 'http://help.yandex.ru/partner/image/banners-media-rtb-300250.png'};
+
+
+        return {
+            restrict: "C",
+            template: "<br /> <img class=\"img-thumbnail\" src=\"{{img}}\"/>\
+                        <img class=\"img-thumbnail\" src=\"{{img.img2}}\" alt=\"\"/>\
+                        <img class=\"img-thumbnail\" src=\"{{img.img3}}\" alt=\"\"/>",
+            link: function($scope, firstimexamples) {
+//                alert("I'm working faster")
+                $scope.img = "http://isells.eu/media/features/voip.jpg";
+            }
+        }
+    }
+);
+
+
 
 var ModalInstanceCtrl = function ($scope, $modalInstance) {
 
