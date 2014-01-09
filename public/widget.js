@@ -30,8 +30,8 @@ var J50Npi = J50Npi || {currentScript:null,getJSON:function(b,d,h){var g=b+(b.in
 
         // Getting all ads
         J50Npi.getJSON('//libertyads.herokuapp.com/ads', {}, function (geodata) {
-            globalScope.libertyAds.dataObj = geodata;
-            console.log('data:load');
+            libertyAds.dataObj = geodata;
+            console.log('data:load', geodata);
             ee.emitEvent('data:load');
         });
     }
@@ -45,31 +45,33 @@ var J50Npi = J50Npi || {currentScript:null,getJSON:function(b,d,h){var g=b+(b.in
             libertyAds.foundEls.push(el);
             console.log('Identified embed tag %o with info: %o', el, libertyAds.foundEls.indexOf(el));
 
-            ee.addListener('data:load', function () {
+            ee.addListener('data:load', (function (el) {
+                return function () {
 
-                var size = el.getAttribute('data-size').split('x');
+                    var size = el.getAttribute('data-size').split('x');
 
-                var SVGData = [
-                    'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2">',
-                    '<a xlink:href="/svg/index.html" target="_top"><text x="0" y="15">This is Scalable Vector Graphic (SVG) Text</text></a>',
-                    '</svg>'
-                ];
+                    var SVGData = [
+                        'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2">',
+                        '<a xlink:href="/svg/index.html" target="_top"><text x="0" y="15">This is Scalable Vector Graphic (SVG) Text</text></a>',
+                        '</svg>'
+                    ];
 
-                var SVGElement = document.createElement("object");
-                SVGElement.style.border = "1px solid green";
-                SVGElement.width = size[0];
-                SVGElement.height = size[1];
-                SVGElement.setAttribute("type", "image/svg+xml");
-                SVGElement.setAttribute('data', SVGData.join());
-                SVGElement.addEventListener('load', function () {
-                    console.log('SVGElement loaded: %o', el);
-                }, false);
+                    var SVGElement = document.createElement("object");
+                    SVGElement.style.border = "1px solid green";
+                    SVGElement.width = size[0];
+                    SVGElement.height = size[1];
+                    SVGElement.setAttribute("type", "image/svg+xml");
+                    SVGElement.setAttribute('data', SVGData.join());
+                    SVGElement.addEventListener('load', function () {
+                        console.log('SVGElement loaded: %o', el);
+                    }, false);
 
-                el.parentNode.insertBefore(SVGElement, el);
+                    el.parentNode.insertBefore(SVGElement, el);
 
-                // Always remove after use
-                return true;
-            });
+                    // Always remove after use
+                    return true;
+                }
+            })(el));
 
         } else {
             console.log('Skipping embed tag %o with info: %o', el, libertyAds.foundEls.indexOf(el));
