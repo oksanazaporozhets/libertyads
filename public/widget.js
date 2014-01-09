@@ -48,50 +48,22 @@ var J50Npi = J50Npi || {currentScript:null,getJSON:function(b,d,h){var g=b+(b.in
             ee.addListener('data:load', (function (el) {
                 return function () {
 
+                    var svgData = ['data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2">'];
+                    libertyAds.dataObj.forEach(function (ad) {
+                        svgData.push('<a xlink:href="' + ad.url + '" target="_top"><text x="0" y="15">' + ad.title + '</text></a>');
+                    })
+                    svgData.push('</svg>');
+
                     var size = el.getAttribute('data-size').split('x');
-
-                    var SVGData = [
-                        'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2">',
-                        '<a xlink:href="/svg/index.html" target="_top"><text x="0" y="15">This is Scalable Vector Graphic (SVG) Text</text></a>',
-                        '</svg>'
-                    ];
-
                     var objectDocument = document.createElement("object");
                     objectDocument.style.border = "1px solid green";
                     objectDocument.width = size[0];
                     objectDocument.height = size[1];
                     objectDocument.setAttribute("type", "image/svg+xml");
-                    objectDocument.setAttribute('data', SVGData.join());
+                    objectDocument.setAttribute('data', svgData.join());
 
                     objectDocument.addEventListener('load', function () {
                         console.log('SVGElement loaded: %o', el);
-
-                        var svgns = "http://www.w3.org/2000/svg",
-                            svgDocument = objectDocument.contentDocument;
-                        console.log(svgDocument);
-
-                        var data1 = svgDocument.createTextNode("Line 1");
-                        var data2 = svgDocument.createTextNode("Line 2");
-
-                        var span1 = svgDocument.createElementNS(svgns, "tspan");
-                        var span2 = svgDocument.createElementNS(svgns, "tspan");
-
-                        span2.setAttributeNS(null, "x", "0");
-                        span2.setAttributeNS(null, "dy", "1em");
-
-                        var text = svgDocument.createElementNS(svgns, "text");
-                        text.setAttributeNS(null, "x", "0");
-                        text.setAttributeNS(null, "y", "13");
-                        text.setAttributeNS(null, "fill", "green");
-
-                        span1.appendChild(data1);
-                        span2.appendChild(data2);
-
-                        text.appendChild(span1);
-                        text.appendChild(span2);
-
-                        svgDocument.documentElement.appendChild(text);
-
                     }, false);
 
                     el.parentNode.insertBefore(objectDocument, el);
