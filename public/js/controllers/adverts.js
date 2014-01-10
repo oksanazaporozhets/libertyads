@@ -103,29 +103,37 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
 
     };
 
+    $scope.userid = user._id;
+
 
     $scope.imagesize = function(){
 //        var imsize = imsize;
         if ($scope.imsize == "1") {
             $scope.img1 = 'http://help.yandex.ru/partner/image/banners-direct-rtb-240400.png';
             $scope.img2 = 'http://help.yandex.ru/partner/image/banners-direct-pic-rtb-240400.png';
-            $scope.img3 = 'http://help.yandex.ru/partner/image/banners-media-rtb-240400.png'; }
+            $scope.img3 = 'http://help.yandex.ru/partner/image/banners-media-rtb-240400.png';
+            $scope.datasize = '240x40';
+        }
         if ($scope.imsize == "2") {
             $scope.img1 = 'http://help.yandex.ru/partner/image/banners-direct-rtb-72890.png';
             $scope.img2 = 'http://help.yandex.ru/partner/image/banners-direct-pic-rtb-72890.png';
-            $scope.img3 = 'http://help.yandex.ru/partner/image/banners-media-rtb-72890.png'; }
-        if ($scope.imsize == "3") {
-            $scope.img1 = 'http://help.yandex.ru/partner/image/banners-direct-rtb-1000120.png';
-            $scope.img2 = 'http://help.yandex.ru/partner/image/banners-direct-rtb-1000120.png';
-            $scope.img3 = 'http://help.yandex.ru/partner/image/banners-media-rtb-1000120.png'; }
+            $scope.img3 = 'http://help.yandex.ru/partner/image/banners-media-rtb-72890.png';
+            $scope.datasize = '728x90';
+        }
+//        if ($scope.imsize == "3") {
+//            $scope.img1 = 'http://help.yandex.ru/partner/image/banners-direct-rtb-1000120.png';
+//            $scope.img2 = 'http://help.yandex.ru/partner/image/banners-direct-rtb-1000120.png';
+//            $scope.img3 = 'http://help.yandex.ru/partner/image/banners-media-rtb-1000120.png'; }
         if ($scope.imsize == "4") {
             $scope.img1 = 'http://help.yandex.ru/partner/image/banners-direct-rtb-160600.png';
             $scope.img2 = 'http://help.yandex.ru/partner/image/banners-direct-pic-rtb-160600.png';
-            $scope.img3 = 'http://help.yandex.ru/partner/image/banners-media-rtb-160600.png'; }
-        if ($scope.imsize == "5") {
-            $scope.img1 = 'http://help.yandex.ru/partner/image/banners-direct-rtb-300250.png';
-            $scope.img2 = 'http://help.yandex.ru/partner/image/banners-direct-pic-rtb-300250.png';
-            $scope.img3 = 'http://help.yandex.ru/partner/image/banners-media-rtb-300250.png'; }
+            $scope.img3 = 'http://help.yandex.ru/partner/image/banners-media-rtb-160600.png';
+            $scope.datasize = '160x600';
+        }
+//        if ($scope.imsize == "5") {
+//            $scope.img1 = 'http://help.yandex.ru/partner/image/banners-direct-rtb-300250.png';
+//            $scope.img2 = 'http://help.yandex.ru/partner/image/banners-direct-pic-rtb-300250.png';
+//            $scope.img3 = 'http://help.yandex.ru/partner/image/banners-media-rtb-300250.png'; }
     };
 
 }]);

@@ -8,9 +8,9 @@
                         <select class="form-control" name="imsize" data-ng-init="imsize = '1'; imagesize()" data-ng-model="imsize" data-ng-change="imagesize()">
                             <option value="1">240x400</option>
                             <option value="2" >728x90</option>
-                            <option value="3" >1000x120</option>
+                            <!--<option value="3" >1000x120</option>-->
                             <option value="4" >160x600</option>
-                            <option value="5" >300x250</option>
+                            <!--<option value="5" >300x250</option>-->
                         </select>
                     </div>
 
@@ -21,23 +21,23 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group container">
-                    <label class="">Выберите вариант оформления вашего рекламного блока:</label>
-                    <div class="container">
-                        <div class=" ">
-                            <div class="col-md-6 well"></div>
-                            <div class="col-md-6 well"></div>
-                        </div>
-                        <div class=" ">
-                            <div class="col-md-6 well"></div>
-                            <div class="col-md-6 well"></div>
-                        </div>
-                        <div class=" ">
-                            <div class="col-md-6 well"></div>
-                            <div class="col-md-6 well"></div>
-                        </div>
-                    </div>
-            </div>
+            <!--<div class="form-group container">-->
+                    <!--<label class="">Выберите вариант оформления вашего рекламного блока:</label>-->
+                    <!--<div class="container">-->
+                        <!--<div class=" ">-->
+                            <!--<div class="col-md-6 well"></div>-->
+                            <!--<div class="col-md-6 well"></div>-->
+                        <!--</div>-->
+                        <!--<div class=" ">-->
+                            <!--<div class="col-md-6 well"></div>-->
+                            <!--<div class="col-md-6 well"></div>-->
+                        <!--</div>-->
+                        <!--<div class=" ">-->
+                            <!--<div class="col-md-6 well"></div>-->
+                            <!--<div class="col-md-6 well"></div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+            <!--</div>-->
         </form>
 
 
@@ -52,7 +52,7 @@
                             <label class="col-sm-2 control-label" for="code"><!--<a class="btn btn-link" ng-click="open('code')"><i class="glyphicon glyphicon-info-sign"></i></a>-->Ваш код:</label>
 
                             <div class="col-sm-6">
-                                <textarea class="form-control" name="code" id="code" rows="5"><script data-id="{{userid}}" data-size="728x90" src="//libertyads.herokuapp.com/widget.js" async="true"></script></textarea>
+                                <textarea class="form-control" name="code" id="code" rows="5"><script data-id="{{userid}}" data-size="{{datasize}}" src="//libertyads.herokuapp.com/widget.js" async="true"></script></textarea>
                             </div>
                         </div>
 
