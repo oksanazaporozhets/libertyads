@@ -110,7 +110,7 @@ function escapeHtml(unsafe) {
                         ],
                         x = 4;
 
-                    if (size == '728x90') {
+                    if (size[0] == '728') {
 
                         getRandomSubarray(libertyAds.dataObj, 2).forEach(function (ad) {
                             var y = 20;
@@ -127,7 +127,7 @@ function escapeHtml(unsafe) {
                             x += 362;
                         });
 
-                    } else if (size == '240x400') {
+                    } else if (size[0] == '240') {
 
                         var y = 20;
 
