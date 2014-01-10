@@ -9,6 +9,41 @@
  * Basic JSONP helper (pure JS)
  */
 var J50Npi = J50Npi || {currentScript:null,getJSON:function(b,d,h){var g=b+(b.indexOf("?")+1?"&":"?");var c=document.getElementsByTagName("head")[0];var a=document.createElement("script");var f=[];var e="";this.success=h;d.callback="J50Npi.success";for(e in d){f.push(e+"="+encodeURIComponent(d[e]))}g+=f.join("&");a.type="text/javascript";a.src=g;if(this.currentScript){c.removeChild(currentScript)}c.appendChild(a)},success:null};
+function splitIntoLines(n,t){var e,o,r=[],h="",i=n.split(" ");for(e=0;e<i.length;)o=addWordOntoLine(h,i[e]),o.length>t?(0==h.length&&(h=o,e++),r.push(h),h=""):(h=o,e++);return h.length>0&&r.push(h),r}function addWordOntoLine(n,t){return 0!=n.length&&(n+=" "),n+=t}
+
+function splitIntoLines(input, len) {
+    var i;
+    var output = [];
+    var lineSoFar = "";
+    var temp;
+    var words = input.split(' ');
+    for (i = 0; i < words.length;) {
+        // check if adding this word would exceed the len
+        temp = addWordOntoLine(lineSoFar, words[i]);
+        if (temp.length > len) {
+            if (lineSoFar.length == 0) {
+                lineSoFar = temp;     // force to put at least one word in each line
+                i++;                  // skip past this word now
+            }
+            output.push(lineSoFar);   // put line into output
+            lineSoFar = "";           // init back to empty
+        } else {
+            lineSoFar = temp;         // take the new word
+            i++;                      // skip past this word now
+        }
+    }
+    if (lineSoFar.length > 0) {
+        output.push(lineSoFar);
+    }
+    return(output);
+}
+
+function addWordOntoLine(line, word) {
+    if (line.length != 0) {
+        line += " ";
+    }
+    return(line += word);
+}
 
 function getRandomSubarray(arr, size) {
     var shuffled = arr.slice(0), i = arr.length, temp, index;
@@ -19,6 +54,15 @@ function getRandomSubarray(arr, size) {
         shuffled[i] = temp;
     }
     return shuffled.slice(0, size);
+}
+
+function escapeHtml(unsafe) {
+    return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
 (function (globalScope) {
@@ -59,17 +103,29 @@ function getRandomSubarray(arr, size) {
             ee.addListener('data:load', (function (el) {
                 return function () {
 
-                    var svgData = ['data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">'],
-                        x = 0;
+                    var size = el.getAttribute('data-size').split('x'),
+                        svgData = [
+                            'data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">',
+                            '<style type="text/css"><![CDATA[ * {font-family: Tahoma;} .title{font-size: 16px; text-decoration: underline; fill: blue;} .text{font-size: 14px;} .url{font-size: 12px; fill:green;}]]></style>'
+                        ],
+                        x = 4;
 
                     getRandomSubarray(libertyAds.dataObj, 2).forEach(function (ad) {
-                        svgData.push('<a xlink:href="' + ad.url + '" target="_top"><text x="' + x + '" y="20" font-size="16" fill="blue">' + encodeURIComponent(ad.title) + '</text></a>');
-                        svgData.push('<text x="' + x + '" y="40" font-size="14">' + ad.content + '</text>');
-                        x += 364;
+                        var y = 20;
+                        svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="title" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.title)) + '</text></a>');
+
+                        splitIntoLines(ad.text, 50).forEach(function(line){
+                            y += 20;
+                            svgData.push('<text class="text" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(line)) + '</text>');
+                        });
+
+                        y += 20;
+                        svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="url" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.vurl || ad.url)) + '</text></a>');
+
+                        x += 362;
                     });
                     svgData.push('</svg>');
 
-                    var size = el.getAttribute('data-size').split('x');
                     var objectDocument = document.createElement("object");
                     objectDocument.style.border = "1px solid green";
                     objectDocument.width = size[0];
