@@ -130,10 +130,9 @@ function escapeHtml(unsafe) {
                         });
 
                     } else if (size[0] == '240') {
-
-                        var y = 20;
-
+                        var offset = 0;
                         getRandomSubarray(libertyAds.dataObj, 4).forEach(function (ad) {
+                            var y = 20 + offset;
                             svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="title" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.title)) + '</text></a>');
 
                             y += 20;
@@ -146,7 +145,7 @@ function escapeHtml(unsafe) {
                             y += 4;
                             svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="url" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.vurl || ad.url)) + '</text></a>');
 
-                            y += 24;
+                            offset += 100;
                         });
 
                     }
