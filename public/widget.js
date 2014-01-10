@@ -142,6 +142,7 @@ function escapeHtml(unsafe) {
                             y += 20;
                             svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="url" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.vurl || ad.url)) + '</text></a>');
 
+                            y += 24;
                         });
 
                     }
