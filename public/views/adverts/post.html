@@ -5,23 +5,19 @@
                 <label class="col-md-3">Выберите размеры вашего рекламного блока:</label>
                 <div class="col-md-9">
                     <div class="col-md-3">
-                        <select class="form-control" name="imsize" data-ng-model="imsize" data-ng-change="imagesize({{imsize}})">
-                            <option value="firstim">240x400</option>
-                            <option value="secondim" >728x90</option>
-                            <option value="thirdim" >1000x120</option>
-                            <option value="fourthim" >160x600</option>
-                            <option value="fifthim" >300x250</option>
+                        <select class="form-control" name="imsize" data-ng-init="imsize = '1'; imagesize()" data-ng-model="imsize" data-ng-change="imagesize()">
+                            <option value="1">240x400</option>
+                            <option value="2" >728x90</option>
+                            <option value="3" >1000x120</option>
+                            <option value="4" >160x600</option>
+                            <option value="5" >300x250</option>
                         </select>
                     </div>
 
-                        <div class="col-md-12"><br/>
-                            <input type="text" class="col-md-10" data-ng-model="imsize"/> <br/>
+                    <div class="col-md-12"><br/>
                         <img class="img-thumbnail" src="{{img1}}" alt=""/>
-                        <img class="img-thumbnail" src="{{img.img2}}" alt=""/>
-                        <img class="img-thumbnail" src="{{img.img3}}" alt=""/>
-
-                             <div class="{{imsize}}"> {{imsize}} </div>
-
+                        <img class="img-thumbnail" src="{{img2}}" alt=""/>
+                        <img class="img-thumbnail" src="{{img3}}" alt=""/>
                     </div>
                 </div>
             </div>
