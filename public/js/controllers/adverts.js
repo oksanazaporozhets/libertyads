@@ -8,7 +8,7 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
             url: this.protocol + this.url,
             urltitle: this.urltitle,
             regions: this.regions,
-            keywords: this.keywords
+            keywords: angular.lowercase(this.keywords)
         });
         advert.$save(function(response) {
             $location.path("adverts/"/* + response._id*/);
@@ -40,6 +40,7 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
     };
 
     $scope.update = function() {
+        $scope.advert.keywords = angular.lowercase($scope.advert.keywords);
         var advert = $scope.advert;
         if (!advert.updated) {
             advert.updated = [];
