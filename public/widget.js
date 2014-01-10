@@ -131,7 +131,7 @@ function escapeHtml(unsafe) {
 
                         var y = 20;
 
-                        getRandomSubarray(libertyAds.dataObj, 2).forEach(function (ad) {
+                        getRandomSubarray(libertyAds.dataObj, 4).forEach(function (ad) {
                             svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="title" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.title)) + '</text></a>');
 
                             splitIntoLines(ad.text, 30).forEach(function (line) {
