@@ -106,7 +106,7 @@ function escapeHtml(unsafe) {
                     var size = el.getAttribute('data-size').split('x'),
                         svgData = [
                             'data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">',
-                            '<style type="text/css"><![CDATA[ * {font-family: Tahoma;} .title{font-size: 16px; text-decoration: underline; fill: blue;} .text{font-size: 14px;} .url{font-size: 12px; fill:green;}]]></style>'
+                            '<style type="text/css"><![CDATA[ * {font-family: Tahoma;} .title{font-size: 15px; text-decoration: underline; fill: blue;} .text{font-size: 13px;} .url{font-size: 12px; fill:green;}]]></style>'
                         ],
                         x = 4;
 
@@ -116,12 +116,14 @@ function escapeHtml(unsafe) {
                             var y = 20;
                             svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="title" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.title)) + '</text></a>');
 
+                            y += 20;
+
                             splitIntoLines(ad.text, 50).forEach(function (line) {
-                                y += 20;
                                 svgData.push('<text class="text" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(line)) + '</text>');
+                                y += 16;
                             });
 
-                            y += 20;
+                            y += 4;
                             svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="url" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.vurl || ad.url)) + '</text></a>');
 
                             x += 362;
@@ -134,12 +136,14 @@ function escapeHtml(unsafe) {
                         getRandomSubarray(libertyAds.dataObj, 4).forEach(function (ad) {
                             svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="title" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.title)) + '</text></a>');
 
+                            y += 20;
+
                             splitIntoLines(ad.text, 30).forEach(function (line) {
-                                y += 20;
                                 svgData.push('<text class="text" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(line)) + '</text>');
+                                y += 16;
                             });
 
-                            y += 20;
+                            y += 4;
                             svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="url" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.vurl || ad.url)) + '</text></a>');
 
                             y += 24;
