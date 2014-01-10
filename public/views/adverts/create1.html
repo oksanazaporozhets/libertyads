@@ -77,7 +77,15 @@
 
                                 <div class="col-sm-8">
                                     <div class="input-group">
-                                        <span class="input-group-addon">http://</span>
+                                        <div class="input-group-btn"><a class="btn btn-default dropdown-toggle"
+                                                                        data-toggle="dropdown" href="" data-ng-init="protocol = 'http://'">{{protocol}} <span
+                                                class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="" data-ng-click="protocol = 'http://'">http://</a></li>
+                                                <li><a href="" data-ng-click="protocol = 'https://'">https://</a></li>
+                                            </ul>
+                                        </div>
+                                        <!--<span class="input-group-addon">http://</span>-->
                                         <input placeholder="" class="form-control " id="url" ng-model="url"
                                                type="text" maxlength="45" required/>
                                     </div>
@@ -94,7 +102,7 @@
                         </div>
                         <div class="col-md-5">
                             <div class="well col-md-10">
-                                <a href="http://{{url}}" class="" target="_blank"><b>{{title}}</b></a><br/>
+                                <a href="{{url}}" class="" target="_blank"><b>{{title}}</b></a><br/>
 
                                 <div>{{text}}</div>
                                 <small ng-if="!urltitle" class="text-success">{{url}}</small>
