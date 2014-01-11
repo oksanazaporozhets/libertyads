@@ -71,23 +71,6 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
     };
 
 //---------------1------------------------------------------
-//    $scope.region = "qwerty";
-
-//    $scope.firstimexamples = {  img1: "http://help.yandex.ru/partner/image/banners-direct-rtb-240400.png",
-//                                img2: "http://help.yandex.ru/partner/image/banners-direct-rtb-240400.png",
-//                                img3: "http://help.yandex.ru/partner/image/banners-media-rtb-240400.png"};
-//    $scope.secondimexamples ={  img1: 'http://help.yandex.ru/partner/image/banners-direct-rtb-72890.png',
-//                                img2: 'http://help.yandex.ru/partner/image/banners-direct-pic-rtb-72890.png',
-//                                img3: 'http://help.yandex.ru/partner/image/banners-media-rtb-72890.png'};
-//    $scope.thirdimexamples ={   img1: 'http://help.yandex.ru/partner/image/banners-direct-rtb-1000120.png',
-//                                img2: 'http://help.yandex.ru/partner/image/banners-direct-rtb-1000120.png',
-//                                img3: 'http://help.yandex.ru/partner/image/banners-media-rtb-1000120.png'};
-//    $scope.fourthimexamples ={  img1: 'http://help.yandex.ru/partner/image/banners-direct-rtb-160600.png',
-//                                img2: 'http://help.yandex.ru/partner/image/banners-direct-pic-rtb-160600.png',
-//                                img3: 'http://help.yandex.ru/partner/image/banners-media-rtb-160600.png'};
-//    $scope.fifthimexamples ={   img1: 'http://help.yandex.ru/partner/image/banners-direct-rtb-300250.png',
-//                                img2: 'http://help.yandex.ru/partner/image/banners-direct-pic-rtb-300250.png',
-//                                img3: 'http://help.yandex.ru/partner/image/banners-media-rtb-300250.png'};
 
 
     $scope.open = function (filename) {
@@ -144,9 +127,6 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
 }]);
 
 var ModalInstanceCtrl = function ($scope, $modalInstance) {
-
-//    $scope.region = region;
-//    $scope.region = '1';
 
     $scope.ok = function (mregion) {
         $modalInstance.close(mregion);
