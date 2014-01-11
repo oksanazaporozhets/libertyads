@@ -114,15 +114,17 @@ function escapeHtml(unsafe) {
 
                         getRandomSubarray(libertyAds.dataObj, 2).forEach(function (ad) {
                             var y = 20;
+                            // Title
                             svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="title" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.title)) + '</text></a>');
 
+                            // Text
                             y += 20;
-
                             splitIntoLines(ad.text, 50).forEach(function (line) {
                                 svgData.push('<text class="text" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(line)) + '</text>');
                                 y += 16;
                             });
 
+                            // URL
                             y += 4;
                             svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="url" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.vurl || ad.url)) + '</text></a>');
 
@@ -133,15 +135,41 @@ function escapeHtml(unsafe) {
                         var offset = 0;
                         getRandomSubarray(libertyAds.dataObj, 4).forEach(function (ad) {
                             var y = 20 + offset;
+                            // Title
                             svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="title" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.title)) + '</text></a>');
 
+                            // Text
                             y += 20;
-
                             splitIntoLines(ad.text, 30).forEach(function (line) {
                                 svgData.push('<text class="text" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(line)) + '</text>');
                                 y += 16;
                             });
 
+                            // URL
+                            y += 4;
+                            svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="url" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.vurl || ad.url)) + '</text></a>');
+
+                            offset += 100;
+                        });
+
+                    } else if (size[0] == '160') {
+                        var offset = 0;
+                        getRandomSubarray(libertyAds.dataObj, 4).forEach(function (ad) {
+                            var y = 20 + offset;
+                            // Title
+                            splitIntoLines(ad.title, 25).forEach(function (line) {
+                                svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="title" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(line)) + '</text></a>');
+                                y += 16;
+                            });
+
+                            // Text
+                            y += 20;
+                            splitIntoLines(ad.text, 25).forEach(function (line) {
+                                svgData.push('<text class="text" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(line)) + '</text>');
+                                y += 16;
+                            });
+
+                            // URL
                             y += 4;
                             svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="url" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.vurl || ad.url)) + '</text></a>');
 
