@@ -202,8 +202,4 @@ function escapeHtml(unsafe) {
             console.log('Skipping embed tag %o with info: %o', el, libertyAds.foundEls.indexOf(el));
         }
     }
-}(this));
-
-Дизайн интерьера, все стили, фото
-Только качественный ремонт авто!
-Свои квартиры посуточно во Львове
+}(this))
