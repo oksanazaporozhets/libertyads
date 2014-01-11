@@ -157,14 +157,14 @@ function escapeHtml(unsafe) {
                         getRandomSubarray(libertyAds.dataObj, 4).forEach(function (ad) {
                             var y = 20 + offset;
                             // Title
-                            splitIntoLines(ad.title, 25).forEach(function (line) {
+                            splitIntoLines(ad.title, 20).forEach(function (line) {
                                 svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="title" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(line)) + '</text></a>');
                                 y += 16;
                             });
 
                             // Text
                             y += 20;
-                            splitIntoLines(ad.text, 25).forEach(function (line) {
+                            splitIntoLines(ad.text, 20).forEach(function (line) {
                                 svgData.push('<text class="text" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(line)) + '</text>');
                                 y += 16;
                             });
@@ -173,7 +173,7 @@ function escapeHtml(unsafe) {
                             y += 4;
                             svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="url" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.vurl || ad.url)) + '</text></a>');
 
-                            offset += 100;
+                            offset += 150;
                         });
 
                     }
