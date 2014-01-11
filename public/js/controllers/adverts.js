@@ -78,7 +78,7 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
 
         var modalInstance = $modal.open({
             templateUrl: 'views/help/'+filename+'.html',
-            controller: 'ModalInstanceCtrl',
+            controller: 'MainCtrl',
             resolve: {
                 mregion: function(){
                     return $scope.mregion;
@@ -139,3 +139,27 @@ var ModalInstanceCtrl = function ($scope, $modalInstance) {
 };
 
 
+
+
+
+
+function Choice(name, children) {
+    this.name = name;
+    this.checked = false;
+    this.children = children || [];
+}
+
+var apparel = new Choice('Apparel', [
+    new Choice('Mens Shirts', [
+        new Choice('Dress'),
+        new Choice('T-Shirt')
+    ]),
+    new Choice('Womens Shirts')
+]);
+var boats = new Choice('Cars');
+
+var MainCtrl = function($scope) {
+    $scope.name = 'World';
+
+    $scope.myTree = [apparel, boats];
+};
