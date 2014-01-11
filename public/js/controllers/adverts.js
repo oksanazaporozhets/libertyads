@@ -143,8 +143,6 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
 
 }]);
 
-
-
 var ModalInstanceCtrl = function ($scope, $modalInstance) {
 
 //    $scope.region = region;
@@ -161,11 +159,3 @@ var ModalInstanceCtrl = function ($scope, $modalInstance) {
 };
 
 
-angular.module('mean.adverts').directive('selectOnClick', function () {
-    // Linker function
-    return function (scope, element) {
-        element.bind('click', function () {
-            this.select();
-        });
-    };
-});
