@@ -64,7 +64,6 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
             advertId: $routeParams.advertId
         }, function(advert) {
             $scope.advert = advert;
-//            var turl = JSON.stringify(advert.url);
             var urlmas = advert.url.split("//");
             $scope.protocol = urlmas[0] + '//';
             $scope.advert.url = urlmas[1];
