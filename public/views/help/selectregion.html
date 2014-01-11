@@ -1,12 +1,3 @@
-<div modal-content>{{}}
-    <br/>
-    region: <input type="text" data-ng-model="region"/>
-    <br/>region: {{region}}
-    <br/>
-    <a data-ng-click="mregion = region" href="">click</a>
-    <br/>
-    mregion: {{mregion}}
-    <br/>
-</div>
-<a class="btn btn-success" ng-click="ok(mregion)">OK</a>
-<a class="btn btn-warning" ng-click="cancel()">Cancel</a>
+<choice-tree ng-model="myTree"></choice-tree>
+<hr />
+<pre>$scope.myTree = {{myTree | json}}</pre>
