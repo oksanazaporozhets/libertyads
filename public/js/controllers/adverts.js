@@ -41,6 +41,7 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
 
     $scope.update = function() {
         $scope.advert.keywords = angular.lowercase($scope.advert.keywords);
+        $scope.advert.url = $scope.protocol + $scope.advert.url;
         var advert = $scope.advert;
         if (!advert.updated) {
             advert.updated = [];
@@ -63,6 +64,9 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
             advertId: $routeParams.advertId
         }, function(advert) {
             $scope.advert = advert;
+            var urlmas = advert.url.split("//");
+            $scope.protocol = urlmas[0] + '//';
+            $scope.advert.url = urlmas[1];
         });
     };
 

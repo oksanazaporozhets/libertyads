@@ -74,7 +74,7 @@
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-btn"><a class="btn btn-default dropdown-toggle"
-                                                                        data-toggle="dropdown" href="" data-ng-init="protocol = 'http://'">{{protocol}} <span
+                                                                        data-toggle="dropdown" href="">{{protocol}} <span
                                                 class="caret"></span></a>
                                             <ul class="dropdown-menu">
                                                 <li><a href="" data-ng-click="protocol = 'http://'">http://</a></li>
@@ -98,7 +98,7 @@
                         </div>
                         <div class="col-md-5">
                             <div class="well col-md-10">
-                                <a href="{{advert.url}}" class="" target="_blank"><b>{{advert.title}}</b></a><br/>
+                                <a href="{{protocol + advert.url}}" class="" target="_blank"><b>{{advert.title}}</b></a><br/>
 
 
                                 <div>{{advert.text}}</div>
