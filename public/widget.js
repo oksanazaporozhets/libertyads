@@ -159,11 +159,11 @@ function escapeHtml(unsafe) {
                             // Title
                             splitIntoLines(ad.title, 20).forEach(function (line) {
                                 svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="title" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(line)) + '</text></a>');
-                                y += 16;
+                                y += 18;
                             });
 
                             // Text
-                            y += 20;
+                            y += 4;
                             splitIntoLines(ad.text, 20).forEach(function (line) {
                                 svgData.push('<text class="text" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(line)) + '</text>');
                                 y += 16;
