@@ -32,3 +32,9 @@ console.log('Worker started');
 //        console.log(response); // server response
 //    }
 //});
+
+// This is a WorldIP free geo-location database.
+//        J50Npi.getJSON("//api.wipmania.com/jsonp", {}, function (geodata) {
+//            alert(geodata.address.country);
+//            console.log(geodata);
+//        });

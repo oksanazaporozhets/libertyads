@@ -77,14 +77,15 @@ function escapeHtml(unsafe) {
         // innit emmiter
         var ee = new EventEmitter();
 
-        // This is a WorldIP free geo-location database.
-//        J50Npi.getJSON("//api.wipmania.com/jsonp", {}, function (geodata) {
-//            alert(geodata.address.country);
-//            console.log(geodata);
-//        });
-
         // Getting all ads
         J50Npi.getJSON('//libertyads.herokuapp.com/ads', {}, function (geodata) {
+            localStorage.setItem('libertyAds.dataObj', geodata);
+            window.addEventListener("storage", function (e) {
+                // callback function will be called with a StorageEvent object, except in Internet Explorer
+                // where the event object is stored in window.event.
+                if (!e) { e = window.event; }
+                console.log(e);
+            }, false);
             libertyAds.dataObj = geodata;
             console.log('data:load', geodata);
             ee.emitEvent('data:load');
