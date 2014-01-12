@@ -65,6 +65,10 @@ function escapeHtml(unsafe) {
         .replace(/'/g, "&#039;");
 }
 
+function genHref(ad) {
+    return '//libertyads.herokuapp.com/click/' + encodeURIComponent(JSON.stringify({id: ad._id, url: ad.url}));
+}
+
 (function (globalScope) {
     // Globals
     if (!globalScope.libertyAds) {
@@ -79,13 +83,6 @@ function escapeHtml(unsafe) {
 
         // Getting all ads
         J50Npi.getJSON('//libertyads.herokuapp.com/ads', {}, function (geodata) {
-            localStorage.setItem('libertyAds.dataObj', geodata);
-            window.addEventListener("storage", function (e) {
-                // callback function will be called with a StorageEvent object, except in Internet Explorer
-                // where the event object is stored in window.event.
-                if (!e) { e = window.event; }
-                console.log(e);
-            }, false);
             libertyAds.dataObj = geodata;
             console.log('data:load', geodata);
             ee.emitEvent('data:load');
@@ -116,7 +113,7 @@ function escapeHtml(unsafe) {
                         getRandomSubarray(libertyAds.dataObj, 2).forEach(function (ad) {
                             var y = 20;
                             // Title
-                            svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="title" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.title)) + '</text></a>');
+                            svgData.push('<a xlink:href="' + genHref(ad) + '" target="_top"><text class="title" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.title)) + '</text></a>');
 
                             // Text
                             y += 20;
@@ -127,7 +124,7 @@ function escapeHtml(unsafe) {
 
                             // URL
                             y += 4;
-                            svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="url" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.vurl || ad.url)) + '</text></a>');
+                            svgData.push('<a xlink:href="' + genHref(ad) + '" target="_top"><text class="url" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.vurl || ad.url)) + '</text></a>');
 
                             x += 362;
                         });
@@ -137,7 +134,7 @@ function escapeHtml(unsafe) {
                         getRandomSubarray(libertyAds.dataObj, 4).forEach(function (ad) {
                             var y = 20 + offset;
                             // Title
-                            svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="title" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.title)) + '</text></a>');
+                            svgData.push('<a xlink:href="' + genHref(ad) + '" target="_top"><text class="title" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.title)) + '</text></a>');
 
                             // Text
                             y += 20;
@@ -148,7 +145,7 @@ function escapeHtml(unsafe) {
 
                             // URL
                             y += 4;
-                            svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="url" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.vurl || ad.url)) + '</text></a>');
+                            svgData.push('<a xlink:href="' + genHref(ad) + '" target="_top"><text class="url" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.vurl || ad.url)) + '</text></a>');
 
                             offset += 100;
                         });
@@ -159,7 +156,7 @@ function escapeHtml(unsafe) {
                             var y = 20 + offset;
                             // Title
                             splitIntoLines(ad.title, 20).forEach(function (line) {
-                                svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="title" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(line)) + '</text></a>');
+                                svgData.push('<a xlink:href="' + genHref(ad) + '" target="_top"><text class="title" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(line)) + '</text></a>');
                                 y += 18;
                             });
 
@@ -172,7 +169,7 @@ function escapeHtml(unsafe) {
 
                             // URL
                             y += 4;
-                            svgData.push('<a xlink:href="' + escapeHtml(ad.url) + '" target="_top"><text class="url" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.vurl || ad.url)) + '</text></a>');
+                            svgData.push('<a xlink:href="' + genHref(ad) + '" target="_top"><text class="url" x="' + x + '" y="' + y + '">' + encodeURIComponent(escapeHtml(ad.vurl || ad.url)) + '</text></a>');
 
                             offset += 150;
                         });
