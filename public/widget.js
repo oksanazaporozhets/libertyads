@@ -66,7 +66,7 @@ function escapeHtml(unsafe) {
 }
 
 function genHref(ad) {
-    return encodeURI('//libertyads.herokuapp.com/click/' + encodeURIComponent(JSON.stringify({id: ad._id, url: ad.url})));
+    return encodeURI('https://libertyads.herokuapp.com/click/' + encodeURIComponent(JSON.stringify({id: ad._id, url: ad.url})));
 }
 
 (function (globalScope) {
