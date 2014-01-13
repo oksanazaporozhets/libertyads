@@ -86,7 +86,9 @@ module.exports = function (app, passport, auth) {
     var index = require('../app/controllers/index');
     app.get('/', index.render);
 
+    var context = require('../app/controllers/context');
     // Ads translator
-    app.get('/ads', require('../app/controllers/context').ads);
+    app.get('/ads', context.ads);
+    app.get('/click/:data', context.click);
 
 };

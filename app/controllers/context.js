@@ -20,3 +20,14 @@ exports.ads = function (req, res) {
         }
     });
 };
+
+/**
+ * Click handler
+ */
+exports.click = function (req, res) {
+    // we need to implement error check and logging
+    var data = JSON.parse(req.params.data);
+    // redirect user to target URL
+    res.redirect(data.url);
+    console.log(data);
+};
