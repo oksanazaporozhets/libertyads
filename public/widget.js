@@ -104,7 +104,7 @@ function genHref(ad) {
                     var size = el.getAttribute('data-size').split('x'),
                         svgData = [
                             'data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">',
-                            '<style type="text/css"><![CDATA[ * {font-family: Tahoma;} .title{font-size: 15px; text-decoration: underline; fill: blue;} .text{font-size: 13px;} .url{font-size: 12px; fill:green;}]]></style>'
+                            '<style type="text/css"><![CDATA[ * {font-family: "Tahoma, Geneva, sans-serif";} .title{font-size: 15px; text-decoration: underline; fill: blue;} .text{font-size: 13px;} .url{font-size: 12px; fill:green;}]]></style>'
                         ],
                         x = 4;
 
