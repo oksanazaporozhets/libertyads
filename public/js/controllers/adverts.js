@@ -6,7 +6,7 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
             title: this.title,
             text: this.text,
             url: this.protocol + this.url,
-            urltitle: this.urltitle,
+            vurl: this.vurl,
             regions: this.regions,
             keywords: angular.lowercase(this.keywords)
         });
@@ -18,7 +18,7 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
         this.text = "";
         this.url = "";
         this.protocol = "";
-        this.urltitle = "";
+        this.vurl = "";
         this.regions = "";
         this.keywords = "";
     };

@@ -31,7 +31,7 @@ var AdvertSchema = new Schema({
     url:{
         type: String
     },
-    urltitle:{
+    vurl:{
         type: String
     },
     regions:{},

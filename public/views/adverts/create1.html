@@ -92,10 +92,10 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="urltitle">Название сайта:</label>
+                                <label class="col-sm-4 control-label" for="vurl">Название сайта:</label>
 
                                 <div class="col-sm-8">
-                                    <input placeholder="" class="form-control " id="urltitle" ng-model="urltitle"
+                                    <input placeholder="" class="form-control " id="vurl" ng-model="vurl"
                                            type="text" maxlength="45"/>
                                 </div>
                             </div>
@@ -105,8 +105,8 @@
                                 <a href="{{protocol + url}}" class="" target="_blank"><b>{{title}}</b></a><br/>
 
                                 <div>{{text}}</div>
-                                <small ng-if="!urltitle" class="text-success">{{url}}</small>
-                                <small ng-if="urltitle" class="text-success">{{urltitle}}</small>
+                                <small ng-if="!vurl" class="text-success">{{url}}</small>
+                                <small ng-if="vurl" class="text-success">{{vurl}}</small>
                             </div>
                         </div>
                     </div>
