@@ -28,9 +28,10 @@ exports.ads = function (req, res) {
 exports.click = function (req, res) {
     // we need to implement error check and logging
     var data = JSON.parse(req.params.data);
+    var headers = req.headers;
     // redirect user to target URL
     res.redirect(data.url);
     console.log(data);
-    var click = new Click(data);
+    var click = new Click(data, headers);
     click.save();
 };
