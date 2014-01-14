@@ -35,6 +35,7 @@ exports.click = function (req, res) {
     // redirect user to target URL
     res.redirect(data.url);
     console.log(data);
+    console.log(req.headers);
     var click = new Click(data);
     click.save();
 };
