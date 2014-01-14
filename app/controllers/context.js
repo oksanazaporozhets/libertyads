@@ -29,13 +29,11 @@ exports.click = function (req, res) {
     // we need to implement error check and logging
     var data = JSON.parse(req.params.data);
     var headers = {};
-    headers.userip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    headers.useragent = req.headers['user-agent'];
+    data.userip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    data.useragent = req.headers['user-agent'];
     // redirect user to target URL
     res.redirect(data.url);
-    headers = JSON.parse(headers);
     console.log(data);
-    console.log(headers);
     var click = new Click(data, headers);
     click.save();
 };
