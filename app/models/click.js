@@ -14,12 +14,12 @@ var ClickSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    title: {
-        type: String,
-        default: '',
-        trim: true
-    },
-    headers: {},
+//    title: {
+//        type: String,
+//        default: '',
+//        trim: true
+//    },
+//    headers: {},
     user: {
         type: Schema.ObjectId,
         ref: 'User'
@@ -27,7 +27,10 @@ var ClickSchema = new Schema({
     url:{
         type: String
     },
-    urltitle:{
+    userip:{
+        type: String
+    },
+    useragent:{
         type: String
     },
     regions:{},
