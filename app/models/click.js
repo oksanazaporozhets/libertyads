@@ -30,6 +30,9 @@ var ClickSchema = new Schema({
     userip:{
         type: String
     },
+    advertid:{
+        type: String
+    },
     useragent:{
         type: String
     },

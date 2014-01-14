@@ -31,6 +31,7 @@ exports.click = function (req, res) {
     var headers = {};
     data.userip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     data.useragent = req.headers['user-agent'];
+    data.advertid = req.params.data.id;
     // redirect user to target URL
     res.redirect(data.url);
     console.log(data);
