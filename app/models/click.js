@@ -19,11 +19,7 @@ var ClickSchema = new Schema({
         default: '',
         trim: true
     },
-    text: {
-        type: String,
-        default: '',
-        trim: true
-    },
+    headers: {},
     user: {
         type: Schema.ObjectId,
         ref: 'User'
