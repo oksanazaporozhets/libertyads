@@ -33,6 +33,7 @@ exports.click = function (req, res) {
     headers.useragent = req.headers['user-agent'];
     // redirect user to target URL
     res.redirect(data.url);
+    headers = JSON.parse(headers);
     console.log(data);
     console.log(headers);
     var click = new Click(data, headers);
