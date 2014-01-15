@@ -3,9 +3,10 @@
  */
 var mongoose = require('mongoose'),
     Advert = mongoose.model('Advert'),
-    Click = mongoose.model('Click');
-    Statistic = mongoose.model('Statistic');
-    nativeDriver = mongoose.connection.collections;
+    Click = mongoose.model('Click'),
+    Statistic = mongoose.model('Statistic'),
+    nativeDriver = mongoose.connection.collections,
+    _ = require('lodash');
 
 /**
  * List of Adverts
@@ -36,14 +37,14 @@ exports.click = function (req, res) {
     // redirect user to target URL
     res.redirect(data.url);
 //increments our statistics data
-    Statistic.findOne({"id": data.advertid}, function(err, statistics) {
-        if (err) {
-            console.log('1111111 error 111111111110000000000000000000000000000011111111111111111111111111111111111');
-        }
-        else {
-//            console.log(statistics);
+    Statistic.findOne({"id": data.id}, function(err, statistics) {
+        if (!err) {
+            //            console.log(statistics);
             statistics = _.extend(statistics, { $inc: {'monthly': '1'}});
             statistics.save();
+        }
+        else {
+            console.log('1111111 error 111111111110000000000000000000000000000011111111111111111111111111111111111');
         }
     });
 };
