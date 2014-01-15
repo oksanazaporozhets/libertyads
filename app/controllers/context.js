@@ -49,7 +49,7 @@ exports.click = function (req, res) {
             else {
                 console.log("error: advertid not exist, creating new document for it");
                 var newstat = {};
-                newstat.advert = data.advertid;
+                newstat.advert = data.id;
                 newstat.monthly = 1;
                 var stat = new Statistic(newstat);
                 stat.save();
