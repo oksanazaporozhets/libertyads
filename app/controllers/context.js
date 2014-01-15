@@ -44,7 +44,8 @@ exports.click = function (req, res) {
             if (statistics) {
             console.log("statistics finded, updeting counter...");
             //            console.log(statistics);
-            statistics = _.extend(statistics, {$inc: {'monthly': '2'}});
+//            statistics = _.extend(statistics, {$inc: {'monthly': '2'}});
+                statistics.monthly += 1;
             statistics.save();
             console.log(statistics);
             }
