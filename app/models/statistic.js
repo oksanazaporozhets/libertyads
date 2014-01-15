@@ -19,7 +19,7 @@ var StatisticSchema = new Schema({
         ref: 'Advert'
     },
 //    minute: {},
-    hourly: {},
+//    hourly: {},
     monthly: {
         type: Number
     }

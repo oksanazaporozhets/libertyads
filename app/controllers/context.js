@@ -39,9 +39,14 @@ exports.click = function (req, res) {
 //increments our statistics data
     Statistic.findOne({"id": data.id}, function(err, statistics) {
         if (!err) {
+            if (statistics) {
             //            console.log(statistics);
             statistics = _.extend(statistics, { $inc: {'monthly': '1'}});
             statistics.save();
+            }
+            else {
+                console.log("advertid not exist");
+            }
         }
         else {
             console.log('1111111 error 111111111110000000000000000000000000000011111111111111111111111111111111111');
