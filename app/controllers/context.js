@@ -42,9 +42,11 @@ exports.click = function (req, res) {
     Statistic.findOne({"advert": data.id}, function(err, statistics) {
         if (!err) {
             if (statistics) {
+            console.log("statistics finded, updeting counter...");
             //            console.log(statistics);
-            statistics = _.extend(statistics, { $inc: {'monthly': '1'}});
+            statistics = _.extend(statistics, { $inc: {'monthly': '2'}});
             statistics.save();
+            console.log(statistics);
             }
             else {
                 console.log("error: record for this advert not exist, creating new document for it");
@@ -53,6 +55,7 @@ exports.click = function (req, res) {
                 newstat.monthly = 1;
                 var stat = new Statistic(newstat);
                 stat.save();
+                console.log(stat)
             }
         }
         else {
