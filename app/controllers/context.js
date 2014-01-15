@@ -28,14 +28,20 @@ exports.ads = function (req, res) {
 exports.click = function (req, res) {
     // we need to implement error check and logging
     var data = JSON.parse(req.params.data);
-    var headers = {};
+//    var headers = {};
     data.userip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     data.useragent = req.headers['user-agent'];
     data.advertid = data.id;
     // redirect user to target URL
     res.redirect(data.url);
-    console.log(data);
-    console.log(req.headers);
+//    console.log(data);
+//    console.log(req.headers);
     var click = new Click(data);
     click.save();
+//    sdata = click.aggregate({ $group: {_id: "advertid", }}).
+//    var sdata = new Aggregate();
+
+
+    var stat = new Stat({$inc: {monthly :1}});
+    stat.save();
 };
