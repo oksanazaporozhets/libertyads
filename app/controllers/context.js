@@ -4,6 +4,7 @@
 var mongoose = require('mongoose'),
     Advert = mongoose.model('Advert'),
     Click = mongoose.model('Click');
+    Stat = mongoose.model('Stat');
     nativeDriver = mongoose.connection.collections;
 
 /**
