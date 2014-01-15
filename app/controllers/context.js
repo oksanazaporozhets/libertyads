@@ -36,8 +36,10 @@ exports.click = function (req, res) {
     data.advertid = data.id;
     // redirect user to target URL
     res.redirect(data.url);
+    var click = new Click(data);
+    click.save();
 //increments our statistics data
-    Statistic.findOne({"id": data.id}, function(err, statistics) {
+    Statistic.findOne({"advert": data.id}, function(err, statistics, data) {
         if (!err) {
             if (statistics) {
             //            console.log(statistics);
@@ -45,11 +47,16 @@ exports.click = function (req, res) {
             statistics.save();
             }
             else {
-                console.log("advertid not exist");
+                console.log("error: advertid not exist, creating new document for it");
+                var newstat = {};
+                newstat.advert = data.advertid;
+                newstat.monthly = 1;
+                var stat = new Statistic(newstat);
+                stat.save();
             }
         }
         else {
-            console.log('1111111 error 111111111110000000000000000000000000000011111111111111111111111111111111111');
+            console.log('error: click not saved');
         }
     });
 };
