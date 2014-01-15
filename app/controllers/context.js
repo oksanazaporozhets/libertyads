@@ -55,7 +55,7 @@ exports.click = function (req, res) {
                 newstat.monthly = 1;
                 var stat = new Statistic(newstat);
                 stat.save();
-                console.log(stat)
+                console.log(stat);
             }
         }
         else {
