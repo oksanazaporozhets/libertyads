@@ -39,7 +39,7 @@ exports.click = function (req, res) {
     var click = new Click(data);
     click.save();
 //increments our statistics data
-    Statistic.findOne({"advert": data.id}, function(err, statistics, data) {
+    Statistic.findOne({"advert": data.id}, function(err, statistics) {
         if (!err) {
             if (statistics) {
             //            console.log(statistics);
@@ -47,7 +47,7 @@ exports.click = function (req, res) {
             statistics.save();
             }
             else {
-                console.log("error: advertid not exist, creating new document for it");
+                console.log("error: record for this advert not exist, creating new document for it");
                 var newstat = {};
                 newstat.advert = data.id;
                 newstat.monthly = 1;
