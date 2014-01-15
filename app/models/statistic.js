@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
 /**
  * Click Schema
  */
-var StatSchema = new Schema({
+var StatisticSchema = new Schema({
     created: {
         type: Date,
         default: Date.now
@@ -29,4 +29,4 @@ var StatSchema = new Schema({
 
 
 
-mongoose.model('Stat', StatSchema);
+mongoose.model('Statistic', StatisticSchema);

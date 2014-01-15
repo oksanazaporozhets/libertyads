@@ -4,7 +4,7 @@
 var mongoose = require('mongoose'),
     Advert = mongoose.model('Advert'),
     Click = mongoose.model('Click');
-    Stat = mongoose.model('Stat');
+    Statistic = mongoose.model('Statistic');
     nativeDriver = mongoose.connection.collections;
 
 /**
@@ -35,14 +35,15 @@ exports.click = function (req, res) {
     data.advertid = data.id;
     // redirect user to target URL
     res.redirect(data.url);
-//    console.log(data);
-//    console.log(req.headers);
-    var click = new Click(data);
-    click.save();
-//    sdata = click.aggregate({ $group: {_id: "advertid", }}).
-//    var sdata = new Aggregate();
-
-
-    var stat = new Stat({$inc: {monthly :1}});
-    stat.save();
+//increments our statistics data
+    Statistic.findOne({"id": data.advertid}, function(err, statistics) {
+        if (err) {
+            console.log('1111111 error 111111111110000000000000000000000000000011111111111111111111111111111111111');
+        }
+        else {
+//            console.log(statistics);
+            statistics = _.extend(statistics, { $inc: {'monthly': '1'}});
+            statistics.save();
+        }
+    });
 };
