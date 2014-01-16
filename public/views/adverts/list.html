@@ -1,43 +1,3 @@
-<!--<section data-ng-controller="AdvertsController" data-ng-init="find()">-->
-	<!--<ul class="adverts list-unstyled">-->
-		<!--<li data-ng-repeat="advert in adverts">-->
-			<!--<span>{{advert.created | date:'medium'}}</span> /-->
-			<!--<span>{{advert.user.name}}</span>-->
-			<!--<h2><a data-ng-href="#!/adverts/{{advert._id}}">{{advert.title}}</a></h2>-->
-			<!--<div>{{advert.text}}</div>-->
-			<!--<a href="http://{{advert.link}}">{{advert.linktitle}}</a>-->
-		<!--</li>-->
-	<!--</ul>-->
-	<!--<h1 data-ng-hide="!adverts || adverts.length">No adverts yet. <br> Why don't you <a href="/#!/adverts/create">Create One</a>?</h1>-->
-<!--</section>-->
-
-<!--<section data-ng-controller="AdvertsController" data-ng-init="find()">-->
-	<!--<div class="container col-md-7">-->
-		<!--<div class="col-md-12" data-ng-repeat="advert in adverts">-->
-            <!--<div class="well col-md-10">-->
-                <!--<a href="http://{{advert.link}}" class="" target="_blank"><b>{{advert.title}}</b></a><br/>-->
-
-                <!--<div>{{advert.text}}</div>-->
-                <!--<small class="text-success" href="http://{{advert.link}}">{{advert.linktitle}}</small>-->
-            <!--</div>-->
-            <!--<div data-ng-show="global.user._id == advert.user._id">-->
-                <!--<a class="btn btn-default" href="/#!/adverts/{{advert._id}}/edit">-->
-                    <!--<i class="glyphicon glyphicon-edit"></i>-->
-                <!--</a><br/>-->
-                <!--<a class="btn btn-default" data-ng-click="remove(advert);">-->
-                    <!--<i class="glyphicon glyphicon-trash"></i>-->
-                <!--</a>-->
-            <!--</div>-->
-		<!--</div>-->
-	<!--</div>-->
-	<!--<h1 data-ng-hide="!adverts || adverts.length">No adverts yet. <br> Why don't you <a href="/#!/adverts/create">Create One</a>?</h1>-->
-<!--</section>-->
-
-
-
-
-
-
 
 
 <section data-ng-controller="AdvertsController" data-ng-init="find()">
@@ -60,9 +20,8 @@
             <tr>
                 <td>
                     <div class="<!--col-md-12-->">
-                        <p class="small text-muted">№ {{advert._id}}</p>
+                        <p class="small text-muted">№ {{advert._id}}<span data-ng-repeat="stat in stats" class="label label-success pull-right" data-ng-if="stat.advert._id == advert._id" title="количество переходов по этому обьявлению">{{stat.monthly}}</span></p>
                         <a href="{{advert.url}}" class="" target="_blank"><b>{{advert.title}}</b></a><br/>
-
                         <div>{{advert.text}}</div>
                         <small ng-if="!advert.vurl" class="text-success">{{advert.url}}</small>
                         <small ng-if="advert.vurl" class="text-success">{{advert.vurl}}</small>
@@ -101,12 +60,3 @@
     <h1 data-ng-hide="!adverts || adverts.length">No adverts yet. <br> Why don't you <a href="/#!/adverts/create">Create One</a>?</h1>
 </section>
 
-
-<!--<div class="col-md-5">-->
-    <!--<div class="well well-lg col-md-10">-->
-        <!--<a href="{{advert.url}}" class=""><b>{{advrt.title}}</b></a><br/>-->
-
-        <!--<div>{{advert.text}}</div>-->
-        <!--<small class="text-success" href="{{advert.url}}">{{advert.vurl}}</small>-->
-    <!--</div>-->
-<!--</div>-->

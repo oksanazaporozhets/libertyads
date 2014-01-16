@@ -3,6 +3,7 @@
  */
 var mongoose = require('mongoose'),
     Advert = mongoose.model('Advert'),
+    Statistic = mongoose.model('Statistic'),
     _ = require('lodash');
 
 
@@ -85,6 +86,17 @@ exports.all = function(req, res) {
             });
         } else {
             res.jsonp(adverts);
+        }
+    });
+};
+exports.allstat = function(req, res) {
+    Statistic.find({}).sort('-created').populate('advert', 'user title').exec(function(err, stats) {
+        if (err) {
+            res.render('error', {
+                status: 500
+            });
+        } else {
+            res.jsonp(stats);
         }
     });
 };

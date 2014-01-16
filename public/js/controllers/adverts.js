@@ -1,4 +1,4 @@
-angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$routeParams', '$location', 'Global', 'Adverts', '$modal', function ($scope, $routeParams, $location, Global, Adverts, $modal) {
+angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$routeParams', '$location', 'Global', 'Adverts', 'Statistics', '$modal', function ($scope, $routeParams, $location, Global, Adverts, Statistics, $modal) {
     $scope.global = Global;
 
     $scope.create = function() {
@@ -57,6 +57,10 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
         Adverts.query(function(adverts) {
             $scope.adverts = adverts;
         });
+        Statistics.query(function(stats){
+            $scope.stats = stats;
+            jstats = JSON.stringify(stats);
+        });
     };
 
     $scope.findOne = function() {
@@ -108,20 +112,12 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
             $scope.img3 = 'http://help.yandex.ru/partner/image/banners-media-rtb-72890.png';
             $scope.datasize = '728x90';
         }
-//        if ($scope.imsize == "3") {
-//            $scope.img1 = 'http://help.yandex.ru/partner/image/banners-direct-rtb-1000120.png';
-//            $scope.img2 = 'http://help.yandex.ru/partner/image/banners-direct-rtb-1000120.png';
-//            $scope.img3 = 'http://help.yandex.ru/partner/image/banners-media-rtb-1000120.png'; }
         if ($scope.imsize == "4") {
             $scope.img1 = 'http://help.yandex.ru/partner/image/banners-direct-rtb-160600.png';
             $scope.img2 = 'http://help.yandex.ru/partner/image/banners-direct-pic-rtb-160600.png';
             $scope.img3 = 'http://help.yandex.ru/partner/image/banners-media-rtb-160600.png';
             $scope.datasize = '160x600';
         }
-//        if ($scope.imsize == "5") {
-//            $scope.img1 = 'http://help.yandex.ru/partner/image/banners-direct-rtb-300250.png';
-//            $scope.img2 = 'http://help.yandex.ru/partner/image/banners-direct-pic-rtb-300250.png';
-//            $scope.img3 = 'http://help.yandex.ru/partner/image/banners-media-rtb-300250.png'; }
     };
 
 }]);
@@ -137,9 +133,6 @@ var ModalInstanceCtrl = function ($scope, $modalInstance) {
         $modalInstance.dismiss('cancel');
     };
 };
-
-
-
 
 
 

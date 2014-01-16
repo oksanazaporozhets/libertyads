@@ -8,3 +8,13 @@ angular.module('mean.adverts').factory("Adverts", ['$resource', function($resour
         }
     });
 }]);
+
+angular.module('mean.adverts').factory("Statistics", ['$resource', function($resource) {
+    return $resource('statistics/:advertid', {
+        advertId: '@advert._id'
+    }, {
+        update: {
+            method: 'PUT'
+        }
+    });
+}]);
