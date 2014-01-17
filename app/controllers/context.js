@@ -53,7 +53,7 @@ exports.click = function (req, res) {
 //    inc.$inc['minute.' + hour + '.' + minute] = 1;
     nativeDriver.statistics.update(query, update, {upsert: 1}, function(err, callback){
         if (err) throw err;
-        console.log(callback);
+//        console.log(callback);
     });
 
 
