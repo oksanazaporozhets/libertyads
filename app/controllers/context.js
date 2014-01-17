@@ -30,6 +30,7 @@ exports.ads = function (req, res) {
 exports.click = function (req, res) {
     // we need to implement error check and logging
     console.log(req);
+    console.log("" + req.headers);
     var data = JSON.parse(req.params.data);
 //    var headers = {};
     data.userip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
