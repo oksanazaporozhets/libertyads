@@ -34,9 +34,11 @@ exports.click = function (req, res) {
     res.redirect(data.url);
 
 
-    data.userip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    data.useragent = req.headers['user-agent'];
+    data.ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    data.agent = req.headers['user-agent'];
     data.advertid = data.id;
+    data.accencod = req.headers['accept-encoding'];
+    data.acclang = req.headers['accept-language'];
     var click = new Click(data);
     click.save();
 
@@ -56,6 +58,7 @@ exports.click = function (req, res) {
         if (err) throw err;
 //        console.log(callback);
     });
+    console.log(req.headers);
 
     var id_monthly = dt.getUTCFullYear() + "/" + dt.getUTCMonth()+ 1 + data.id;
     var day_of_month = dt.getUTCDate();

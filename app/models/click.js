@@ -27,13 +27,19 @@ var ClickSchema = new Schema({
     url:{
         type: String
     },
-    userip:{
+    ip:{
+        type: String
+    },
+    agent:{
+        type: String
+    },
+    accencod:{
+        type: String
+    },
+    acclang:{
         type: String
     },
     advertid:{
-        type: String
-    },
-    useragent:{
         type: String
     },
     regions:{},
