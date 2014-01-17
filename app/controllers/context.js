@@ -29,18 +29,38 @@ exports.ads = function (req, res) {
  */
 exports.click = function (req, res) {
     // we need to implement error check and logging
-    console.log("HEADERS:" + req.headers);
     var data = JSON.parse(req.params.data);
-//    var headers = {};
+    // redirect user to target URL
+    res.redirect(data.url);
+
+
     data.userip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     data.useragent = req.headers['user-agent'];
     data.advertid = data.id;
-    // redirect user to target URL
-    res.redirect(data.url);
     var click = new Click(data);
     click.save();
+
 //increments our statistics data
-    Statistic.findOne({"advert": data.id}, function(err, statistics) {
+
+
+    var dt = new Date();
+    var d = dt.getUTCFullYear() + "/" + dt.getUTCMonth()+ 1 + "/" + dt.getUTCDate() + "00:00";
+    var id_daily = dt.getUTCFullYear() + "/" + dt.getUTCMonth()+ 1 + "/" + dt.getUTCDate() + data.id;
+    var hour = dt.getHours();
+    var query = {'_id': id_daily, 'metadata': {'date': d, 'advert': data.id}};
+    var update = { $inc: {} };
+    update.$inc['hourly.' + hour] = 1;
+//    inc.$inc['minute.' + hour + '.' + minute] = 1;
+    nativeDriver.statistics.update(query, update, {upsert: 1}, function(err, callback){
+        if (err) throw err;
+        console.log(callback);
+    });
+
+
+
+
+
+    /*Statistic.findOne({"advert": data.id}, function(err, statistics) {
         if (!err) {
             if (statistics) {
             console.log("statistics finded, updeting counter...");
@@ -63,5 +83,5 @@ exports.click = function (req, res) {
         else {
             console.log('error: click not saved');
         }
-    });
+    });*/
 };
