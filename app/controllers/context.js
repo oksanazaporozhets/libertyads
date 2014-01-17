@@ -44,8 +44,8 @@ exports.click = function (req, res) {
 
 
     var dt = new Date();
-    var dd = dt.getUTCFullYear() + "/" + dt.getUTCMonth()+ 1 + "/00" + "T00:00";
-    var d = dt.getUTCFullYear() + "/" + dt.getUTCMonth()+ 1 + "/" + dt.getUTCDate() + "00:00";
+    var dd = dt.getUTCFullYear() + "/" + dt.getUTCMonth()+ 1 + "/00" + "-00:00";
+    var d = dt.getUTCFullYear() + "/" + dt.getUTCMonth()+ 1 + "/" + dt.getUTCDate() + "-00:00";
     var id_daily = dt.getUTCFullYear() + "/" + dt.getUTCMonth()+ 1 + "/" + dt.getUTCDate() + data.id;
     var hour = dt.getUTCHours();
     var query = {'_id': id_daily, 'metadata': {'date': d, 'advert': data.id}};
