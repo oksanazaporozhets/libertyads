@@ -4,7 +4,9 @@
 var mongoose = require('mongoose'),
     Advert = mongoose.model('Advert'),
     Click = mongoose.model('Click'),
-    Statistic = mongoose.model('Statistic'),
+    Dailystat = mongoose.model('Dailystat'),
+    Monthlystat = mongoose.model('Monthlystat'),
+//    Statistic = mongoose.model('Statistic'),
     nativeDriver = mongoose.connection.collections,
     _ = require('lodash');
 
@@ -48,24 +50,25 @@ exports.click = function (req, res) {
     var dt = new Date();
     var dd = dt.getUTCFullYear() + "/" + dt.getUTCMonth()+ 1 + "/00" + "-00:00";
     var d = dt.getUTCFullYear() + "/" + dt.getUTCMonth()+ 1 + "/" + dt.getUTCDate() + "-00:00";
+
     var id_daily = dt.getUTCFullYear() + "/" + dt.getUTCMonth()+ 1 + "/" + dt.getUTCDate() + data.id;
     var hour = dt.getUTCHours();
     var query = {'_id': id_daily, 'metadata': {'date': d, 'advert': data.id}};
     var update = { $inc: {} };
     update.$inc['hourly.' + hour] = 1;
 //    inc.$inc['minute.' + hour + '.' + minute] = 1;
-    nativeDriver.statistics.update(query, update, {upsert: 1}, function(err, callback){
+    nativeDriver.dailystats.update(query, update, {upsert: 1}, function(err, callback){
         if (err) throw err;
 //        console.log(callback);
     });
-    console.log(req.headers);
+//    console.log(req.headers);
 
     var id_monthly = dt.getUTCFullYear() + "/" + dt.getUTCMonth()+ 1 + data.id;
     var day_of_month = dt.getUTCDate();
     query = {'_id': id_monthly, 'metadata': {'date': dd, 'advert': data.id}};
     update = { $inc: {} };
     update.$inc['daily.' + day_of_month] = 1;
-    nativeDriver.statistics.update(query, update, {upsert: 1}, function(err, callback){
+    nativeDriver.monthlystats.update(query, update, {upsert: 1}, function(err, callback){
         if (err) throw err;
 //        console.log(callback);
     });
