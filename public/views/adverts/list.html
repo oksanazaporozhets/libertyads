@@ -20,7 +20,10 @@
             <tr>
                 <td>
                     <div class="<!--col-md-12-->">
-                        <p class="small text-muted">№ {{advert._id}}<span data-ng-repeat="stat in stats" class="label label-success pull-right" data-ng-if="stat.advert._id == advert._id" title="количество переходов по этому обьявлению">{{stat.monthly}}</span></p>
+                        <p class="small text-muted">№ {{advert._id}}<span data-ng-repeat="dstat in dstats" class="label label-success pull-right" data-ng-if="dstat.metadata.advert == advert._id" title="количество переходов по этому обьявлению за сегодня">{{dstat.summ}}</span>
+                            <span data-ng-repeat="mstat in mstats" class="label label-info pull-right" data-ng-if="mstat.metadata.advert == advert._id" title="количество переходов по этому обьявлению за месяц">{{mstat.summ}}</span>
+
+                        </p>
                         <a href="{{advert.url}}" class="" target="_blank"><b>{{advert.title}}</b></a><br/>
                         <div>{{advert.text}}</div>
                         <small ng-if="!advert.vurl" class="text-success">{{advert.url}}</small>

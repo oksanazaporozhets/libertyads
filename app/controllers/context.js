@@ -56,6 +56,7 @@ exports.click = function (req, res) {
     var query = {'_id': id_daily, 'metadata': {'date': d, 'advert': data.id}};
     var update = { $inc: {} };
     update.$inc['hourly.' + hour] = 1;
+    update.$inc['summ'] = 1;
 //    inc.$inc['minute.' + hour + '.' + minute] = 1;
     nativeDriver.dailystats.update(query, update, {upsert: 1}, function(err, callback){
         if (err) throw err;
@@ -68,6 +69,7 @@ exports.click = function (req, res) {
     query = {'_id': id_monthly, 'metadata': {'date': dd, 'advert': data.id}};
     update = { $inc: {} };
     update.$inc['daily.' + day_of_month] = 1;
+    update.$inc['summ'] = 1;
     nativeDriver.monthlystats.update(query, update, {upsert: 1}, function(err, callback){
         if (err) throw err;
 //        console.log(callback);
