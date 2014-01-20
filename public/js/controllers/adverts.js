@@ -65,6 +65,11 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
             $scope.dstats = dstats;
 //            jdstats = JSON.stringify(dstats);
         });
+        var dt = new Date();
+        $scope.dd = dt.getUTCFullYear() + "/" + dt.getUTCMonth()+ 1 + "/00" +  "-00:00";
+        $scope.d = dt.getUTCFullYear() + "/" + dt.getUTCMonth()+ 1 + "/" + dt.getUTCDate() + "-00:00";
+
+
     };
 
     $scope.findOne = function() {
