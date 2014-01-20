@@ -28,3 +28,13 @@ angular.module('mean.adverts').factory("Dailystats", ['$resource', function($res
         }
     });
 }]);
+
+angular.module('mean.adverts').factory("Clicks", ['$resource', function($resource) {
+    return $resource('api/v1/clicks?conditions={"advertid": @advertid}', {
+        advertId: '@advert._id'
+    }, {
+        update: {
+            method: 'PUT'
+        }
+    });
+}]);

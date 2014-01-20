@@ -1,4 +1,4 @@
-angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$routeParams', '$location', 'Global', 'Adverts', 'Monthlystats', 'Dailystats', '$modal', function ($scope, $routeParams, $location, Global, Adverts, Monthlystats, Dailystats, $modal) {
+angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$routeParams', '$location', 'Global', 'Adverts', 'Monthlystats', 'Clicks', 'Dailystats', '$modal', function ($scope, $routeParams, $location, Global, Adverts, Monthlystats, Dailystats, Clicks, $modal) {
     $scope.global = Global;
 
     $scope.create = function() {
@@ -68,6 +68,14 @@ angular.module('mean.adverts').controller('AdvertsController', ['$scope', '$rout
         var dt = new Date();
         $scope.dd = dt.getUTCFullYear() + "/" + dt.getUTCMonth()+ 1 + "/00" +  "-00:00";
         $scope.d = dt.getUTCFullYear() + "/" + dt.getUTCMonth()+ 1 + "/" + dt.getUTCDate() + "-00:00";
+
+
+    };
+    $scope.findst = function() {
+        Clicks.query(function(stats) {
+            $scope.stats = stats;
+        });
+
 
 
     };

@@ -42,6 +42,7 @@ walk(models_path);
 baucis.rest('Advert');
 baucis.rest('Monthlystat');
 baucis.rest('Dailystat');
+baucis.rest('Click');
 //bootstrap passport config
 require('./config/passport')(passport);
 

@@ -74,7 +74,7 @@ module.exports = function (app, passport, auth) {
     //Advert Routes
     var adverts = require('../app/controllers/adverts');
     app.get('/adverts', auth.requiresLogin, adverts.all);
-//    app.get('/statistics', auth.requiresLogin, adverts.allstat);
+    app.get('/statistic:req', auth.requiresLogin, adverts.allclicks);
     app.post('/adverts', auth.requiresLogin, adverts.create);
     app.get('/adverts/:advertId', auth.requiresLogin, adverts.show);
     app.put('/adverts/:advertId', auth.requiresLogin, auth.advert.hasAuthorization, adverts.update);

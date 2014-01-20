@@ -33,6 +33,9 @@
                         <small ng-if="advert.vurl" class="text-success">{{advert.vurl}}</small>
                     </div>
                     <div class="text-right" data-ng-show="global.user._id == advert.user._id">
+                        <a class="btn btn-default" href="/#!/statistic/{{advert._id}}/statistic">
+                            <i class="glyphicon glyphicon-signal"></i>
+                        </a>
                         <a class="btn btn-default" href="/#!/adverts/{{advert._id}}/edit">
                             <i class="glyphicon glyphicon-edit"></i>
                         </a>

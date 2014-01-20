@@ -3,6 +3,7 @@
  */
 var mongoose = require('mongoose'),
     Advert = mongoose.model('Advert'),
+    Click = mongoose.model('Click'),
 //    Statistic = mongoose.model('Statistic'),
     _ = require('lodash');
 
@@ -100,3 +101,15 @@ exports.all = function(req, res) {
 //        }
 //    });
 //};
+
+exports.allclicks = function(req, res) {
+    Click.find({'advertid':'req.advert._id'})/*.sort('-created').populate('advert', 'user title')*/.exec(function(err, stats) {
+        if (err) {
+            res.render('error', {
+                status: 500
+            });
+        } else {
+            res.jsonp(stats);
+        }
+    });
+};
