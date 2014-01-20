@@ -22,9 +22,9 @@
                     <div class="<!--col-md-12-->">
                         <p class="small text-muted">№ {{advert._id}}
                             <span data-ng-repeat="dstat in dstats"><span class="label label-success pull-right" data-ng-if="dstat.metadata.date == d && dstat.metadata.advert == advert._id" data-ng-init="check.d=false" title="количество переходов за сегодня">{{dstat.summ}}</span>
-                            </span><span class="label label-success pull-right" data-ng-show="check.d==true" title="количество переходов за сегодня">0</span>
+                            </span><span class="label label-default pull-right" data-ng-show="check.d==true" title="количество переходов за сегодня">0</span>
                             <span data-ng-repeat="mstat in mstats" class="label label-info pull-right" data-ng-if="mstat.metadata.date == dd && mstat.metadata.advert == advert._id" data-ng-init="check.m=false" title="количество переходов за месяц">{{mstat.summ}}</span>
-                            <span class="label label-info pull-right" data-ng-show="check.m==true" title="количество переходов за месяц">0</span>
+                            <span class="label label-default pull-right" data-ng-show="check.m==true" title="количество переходов за месяц">0</span>
 
                         </p>
                         <a href="{{advert.url}}" class="" target="_blank"><b>{{advert.title}}</b></a><br/>
